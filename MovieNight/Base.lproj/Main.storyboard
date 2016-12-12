@@ -61,11 +61,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="197" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YMT-ph-NGG">
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SetUpCell" rowHeight="197" id="ZEX-DK-h1z" userLabel="SetUpCell" customClass="SetUpTableViewCell" customModule="MovieNight" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="22" width="375" height="197"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SetUpCell" rowHeight="140" id="ZEX-DK-h1z" userLabel="SetUpCell" customClass="SetUpTableViewCell" customModule="MovieNight" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZEX-DK-h1z" id="NZP-bT-Ovo">
-                                            <frame key="frameInset" width="375" height="196"/>
+                                            <frame key="frameInset" width="375" height="139"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="17A-Lc-U9t">
@@ -76,9 +76,13 @@
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ja-Up-Acc">
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="rXI-y5-uSB" firstAttribute="height" secondItem="J7e-cw-DhV" secondAttribute="height" multiplier="0.3" id="uKr-wj-I12"/>
+                                                        <constraint firstItem="7Ja-Up-Acc" firstAttribute="height" secondItem="rXI-y5-uSB" secondAttribute="height" id="eBJ-9a-5V2"/>
+                                                        <constraint firstItem="rXI-y5-uSB" firstAttribute="height" secondItem="J7e-cw-DhV" secondAttribute="height" multiplier="0.26" id="uKr-wj-I12"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
@@ -367,7 +371,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mjd-QN-FCi" userLabel="User Name">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mjd-QN-FCi" userLabel="User Name">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="cmh-PY-uO0"/>
                                 </constraints>
@@ -377,8 +381,8 @@
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="JEa-D4-vVr">
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="JEa-D4-vVr" secondAttribute="height" multiplier="1:1" id="SEh-5p-Jy3"/>
-                                    <constraint firstAttribute="height" constant="200" id="ez2-kI-mKj"/>
+                                    <constraint firstAttribute="width" secondItem="JEa-D4-vVr" secondAttribute="height" multiplier="5:4" id="SEh-5p-Jy3"/>
+                                    <constraint firstAttribute="height" constant="160" id="ez2-kI-mKj"/>
                                     <constraint firstAttribute="width" constant="200" id="tFM-c9-5VF"/>
                                 </constraints>
                             </imageView>
@@ -417,11 +421,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8F-PO-FU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25345" y="-6897"/>
+            <point key="canvasLocation" x="-25594" y="-6896"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Avatar" width="384" height="384"/>
+        <image name="Avatar" width="275" height="220"/>
         <image name="TMDBLogo" width="204" height="80"/>
     </resources>
 </document>
