@@ -35,23 +35,3 @@ final class TMBDAPIClient: APIClient {
     
 }
 
-//    
-//    func fetchRestaurantsFor(location: Coordinate, category: Foursquare.VenueEndpoint.Category, query: String? = nil, searchRadius: Int? = nil, limit: Int? = nil, completion: APIResult<[Venue]> -> Void) {
-//        
-//        let searchEndpoint = Foursquare.VenueEndpoint.Search(clientID: self.clientID, clientSecret: self.clientSecret, coordinate: location, category: category, query: query, searchRadius: searchRadius, limit: limit)
-//        let endpoint = Foursquare.Venues(searchEndpoint)
-//        
-//        fetch(endpoint, parse: { json -> [Venue]? in
-//            
-//            guard let venues = json["response"]?["venues"] as? [[String: AnyObject]] else {
-//                return nil
-//            }
-//            
-//            return venues.flatMap { venueDict in
-//                return Venue(JSON: venueDict)
-//            }
-//            
-//            
-//            }, completion: completion)
-//    }
-//}
