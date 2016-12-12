@@ -14,6 +14,13 @@
 		6BD985001DFD893600CDA47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BD984FE1DFD893600CDA47F /* LaunchScreen.storyboard */; };
 		6BD9850B1DFD893600CDA47F /* MovieNightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9850A1DFD893600CDA47F /* MovieNightTests.swift */; };
 		6BD985161DFD893600CDA47F /* MovieNightUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985151DFD893600CDA47F /* MovieNightUITests.swift */; };
+		6BD985241DFD8F1800CDA47F /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */; };
+		6BD985261DFD8F3F00CDA47F /* SetUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */; };
+		6BD985281DFD904000CDA47F /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */; };
+		6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */; };
+		6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */; };
+		6BD9852E1DFE526300CDA47F /* PassDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */; };
+		6BD985301DFE53CE00CDA47F /* PassDeviceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852F1DFE53CE00CDA47F /* PassDeviceDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +54,13 @@
 		6BD985111DFD893600CDA47F /* MovieNightUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieNightUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD985151DFD893600CDA47F /* MovieNightUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNightUITests.swift; sourceTree = "<group>"; };
 		6BD985171DFD893700CDA47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpTableViewCell.swift; sourceTree = "<group>"; };
+		6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
+		6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserDelegate.swift; sourceTree = "<group>"; };
+		6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassDeviceViewController.swift; sourceTree = "<group>"; };
+		6BD9852F1DFE53CE00CDA47F /* PassDeviceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassDeviceDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,13 @@
 			children = (
 				6BD984F51DFD893600CDA47F /* AppDelegate.swift */,
 				6BD984F71DFD893600CDA47F /* ViewController.swift */,
+				6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */,
+				6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */,
+				6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */,
+				6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */,
+				6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */,
+				6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */,
+				6BD9852F1DFE53CE00CDA47F /* PassDeviceDelegate.swift */,
 				6BD984F91DFD893600CDA47F /* Main.storyboard */,
 				6BD984FC1DFD893600CDA47F /* Assets.xcassets */,
 				6BD984FE1DFD893600CDA47F /* LaunchScreen.storyboard */,
@@ -262,8 +283,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BD985241DFD8F1800CDA47F /* SetUpViewController.swift in Sources */,
+				6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */,
 				6BD984F81DFD893600CDA47F /* ViewController.swift in Sources */,
 				6BD984F61DFD893600CDA47F /* AppDelegate.swift in Sources */,
+				6BD985301DFE53CE00CDA47F /* PassDeviceDelegate.swift in Sources */,
+				6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */,
+				6BD985261DFD8F3F00CDA47F /* SetUpTableViewCell.swift in Sources */,
+				6BD985281DFD904000CDA47F /* UserDefaultsKey.swift in Sources */,
+				6BD9852E1DFE526300CDA47F /* PassDeviceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
