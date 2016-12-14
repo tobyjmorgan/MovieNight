@@ -22,15 +22,12 @@ final class TMBDAPIClient: APIClient {
         return URLSession(configuration: self.configuration)
     }()
     
-    let apiKey: String
-    
-    init(config: URLSessionConfiguration, apiKey: String) {
+    init(config: URLSessionConfiguration) {
         self.configuration = config
-        self.apiKey = apiKey
     }
     
-    convenience init(apiKey: String) {
-        self.init(config: URLSessionConfiguration.default, apiKey: apiKey)
+    convenience init() {
+        self.init(config: URLSessionConfiguration.default)
     }
     
 }

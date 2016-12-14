@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditUserDelegate, PassDeviceDelegate {
+class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditUserDelegate {
 
+    var model: Model? = nil
     let defaults = UserDefaults.standard
     var currentUserIndex: Int?
 
@@ -26,7 +27,14 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var buttonView: UIView!
     
     @IBAction func onBegin() {
-        performSegue(withIdentifier: "PassDevice", sender: nil)
+
+        // try to create a model (will use the standard user defaults in this process)
+        // failable initializer, so don't proceed if it fails
+        if let newModel = Model() {
+            
+            model = newModel
+            performSegue(withIdentifier: "PassDevice", sender: nil)
+        }
     }
     
     @IBAction func onInsert() {
@@ -62,11 +70,15 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // Thanks to Michael Garito on StackOverflow for this
     // http://stackoverflow.com/questions/29209453/how-to-hide-a-navigation-bar-from-first-viewcontroller-in-swift
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -177,7 +189,8 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         } else if let vc = segue.destination as? PassDeviceViewController {
             
-            vc.delegate = self
+            vc.userNameDelegate = model
+            vc.userSelectionDelegate = model
         }
     }
     
@@ -215,20 +228,8 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: PassDeviceDelegate
     
-    var wizardUserIndex: Int {
-        
-        // kick off the movie picking process with the first user in the list
-        return 0
-    }
-    
-    var wizardUsers: [String] {
-
-        // we can bang here because the next step button only shows up if we
-        // have two or more users to work with
-        return users!
-    }
-    
     func onPassDeviceDismiss() {
-        // do nothing as yet
+        
+        // do nothing yet
     }
 }

@@ -8,7 +8,11 @@
 
 import Foundation
 
+typealias GenreID = Int
+typealias PersonID = Int
+
 enum DiscoverType {
-    case moviesByGenre([Genre])
-    case moviesByEra([MovieEra])
+    case moviesByGenre(GenreID)
+    case moviesByEra(MovieEra)
+    case moviesByActor(PersonID)
 }

@@ -65,24 +65,14 @@ extension TMBDEndpoint: Endpoint {
             
             switch type {
             
-            case .moviesByEra(let eras):
-                for era in eras {
-                    parameters.addValuesFromDictionary(dictionary: era.parameters)
-                }
+            case .moviesByEra(let era):
+                parameters.addValuesFromDictionary(dictionary: era.parameters)
                 
-            case .moviesByGenre(let genres):
+            case .moviesByGenre(let genreID):
+                parameters[Key.with_genres.rawValue] = "\(genreID)"
                 
-                var genresList = ""
-                
-                for genre in genres {
-                    if genresList == "" {
-                        genresList += "\(genre.id)"
-                    } else {
-                        genresList += ", \(genre.id)"
-                    }
-                }
-
-                parameters[Key.with_genres.rawValue] = genresList
+            case .moviesByActor(let actorID):
+                parameters[Key.with_people.rawValue] = "\(actorID)"
             }
             
         case .popularPeople:

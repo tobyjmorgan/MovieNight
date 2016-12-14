@@ -25,6 +25,7 @@ enum Key: HTTPKey {
     case vote_count
     case genres
     case with_genres
+    case with_people
     
     case gender
     case profile_path

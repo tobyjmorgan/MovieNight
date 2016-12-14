@@ -20,8 +20,6 @@
 		6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */; };
 		6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */; };
 		6BD9852E1DFE526300CDA47F /* PassDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */; };
-		6BD985301DFE53CE00CDA47F /* PassDeviceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852F1DFE53CE00CDA47F /* PassDeviceDelegate.swift */; };
-		6BD985321DFE599100CDA47F /* APIItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985311DFE599100CDA47F /* APIItemsViewController.swift */; };
 		6BD9853C1DFF188100CDA47F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9853A1DFF188100CDA47F /* DateExtensions.swift */; };
 		6BD9853D1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9853B1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift */; };
 		6BD985421DFF189B00CDA47F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9853E1DFF189B00CDA47F /* APIClient.swift */; };
@@ -36,6 +34,14 @@
 		6BD985541DFF18BB00CDA47F /* DiscoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */; };
 		6BD985551DFF18BB00CDA47F /* HasHTTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9854D1DFF18BB00CDA47F /* HasHTTPParameters.swift */; };
 		6BD985571DFF18F300CDA47F /* JSONInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985561DFF18F300CDA47F /* JSONInitable.swift */; };
+		6BD985591DFF469000CDA47F /* GenreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985581DFF469000CDA47F /* GenreListViewController.swift */; };
+		6BD9855B1DFF480200CDA47F /* UserSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855A1DFF480200CDA47F /* UserSelection.swift */; };
+		6BD9855D1DFF489700CDA47F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855C1DFF489700CDA47F /* Model.swift */; };
+		6BD9855F1DFF4A4100CDA47F /* PreferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */; };
+		6BD985611DFF4B1200CDA47F /* PreferenceTypeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */; };
+		6BD9859F1DFF4E8400CDA47F /* UserSelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */; };
+		6BD985A11DFFB25E00CDA47F /* PreferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A01DFFB25D00CDA47F /* PreferenceCell.swift */; };
+		6BD985A31E00401600CDA47F /* UserNameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A21E00401600CDA47F /* UserNameDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,12 +77,10 @@
 		6BD985171DFD893700CDA47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
 		6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpTableViewCell.swift; sourceTree = "<group>"; };
-		6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = MovieNight/UserDefaultsKey.swift; sourceTree = "<group>"; };
 		6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserDelegate.swift; sourceTree = "<group>"; };
 		6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassDeviceViewController.swift; sourceTree = "<group>"; };
-		6BD9852F1DFE53CE00CDA47F /* PassDeviceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassDeviceDelegate.swift; sourceTree = "<group>"; };
-		6BD985311DFE599100CDA47F /* APIItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIItemsViewController.swift; sourceTree = "<group>"; };
 		6BD9853A1DFF188100CDA47F /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		6BD9853B1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryAddValuesFromDictionary.swift; sourceTree = "<group>"; };
 		6BD9853E1DFF189B00CDA47F /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 		6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverType.swift; sourceTree = "<group>"; };
 		6BD9854D1DFF18BB00CDA47F /* HasHTTPParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasHTTPParameters.swift; sourceTree = "<group>"; };
 		6BD985561DFF18F300CDA47F /* JSONInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitable.swift; sourceTree = "<group>"; };
+		6BD985581DFF469000CDA47F /* GenreListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreListViewController.swift; sourceTree = "<group>"; };
+		6BD9855A1DFF480200CDA47F /* UserSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelection.swift; sourceTree = "<group>"; };
+		6BD9855C1DFF489700CDA47F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceType.swift; sourceTree = "<group>"; };
+		6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceTypeListViewController.swift; sourceTree = "<group>"; };
+		6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionDelegate.swift; sourceTree = "<group>"; };
+		6BD985A01DFFB25D00CDA47F /* PreferenceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceCell.swift; sourceTree = "<group>"; };
+		6BD985A21E00401600CDA47F /* UserNameDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,14 +158,16 @@
 			children = (
 				6BD984F51DFD893600CDA47F /* AppDelegate.swift */,
 				6BD984F71DFD893600CDA47F /* ViewController.swift */,
-				6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */,
 				6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */,
 				6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */,
 				6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */,
 				6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */,
+				6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */,
+				6BD985A21E00401600CDA47F /* UserNameDelegate.swift */,
 				6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */,
-				6BD9852F1DFE53CE00CDA47F /* PassDeviceDelegate.swift */,
-				6BD985311DFE599100CDA47F /* APIItemsViewController.swift */,
+				6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */,
+				6BD985A01DFFB25D00CDA47F /* PreferenceCell.swift */,
+				6BD985581DFF469000CDA47F /* GenreListViewController.swift */,
 				6BD984F91DFD893600CDA47F /* Main.storyboard */,
 				6BD984FC1DFD893600CDA47F /* Assets.xcassets */,
 				6BD984FE1DFD893600CDA47F /* LaunchScreen.storyboard */,
@@ -206,11 +220,15 @@
 		6BD985391DFF186400CDA47F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6BD985471DFF18BB00CDA47F /* MovieEra.swift */,
 				6BD985491DFF18BB00CDA47F /* Genre.swift */,
 				6BD9854A1DFF18BB00CDA47F /* Movie.swift */,
 				6BD9854B1DFF18BB00CDA47F /* Person.swift */,
+				6BD985471DFF18BB00CDA47F /* MovieEra.swift */,
 				6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */,
+				6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */,
+				6BD9855A1DFF480200CDA47F /* UserSelection.swift */,
+				6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */,
+				6BD9855C1DFF489700CDA47F /* Model.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -352,28 +370,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BD9855D1DFF489700CDA47F /* Model.swift in Sources */,
 				6BD985241DFD8F1800CDA47F /* SetUpViewController.swift in Sources */,
+				6BD9855F1DFF4A4100CDA47F /* PreferenceType.swift in Sources */,
 				6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */,
 				6BD985431DFF189B00CDA47F /* TMBDAPIClient.swift in Sources */,
 				6BD984F81DFD893600CDA47F /* ViewController.swift in Sources */,
 				6BD985531DFF18BB00CDA47F /* Person.swift in Sources */,
 				6BD9853D1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift in Sources */,
 				6BD984F61DFD893600CDA47F /* AppDelegate.swift in Sources */,
+				6BD9855B1DFF480200CDA47F /* UserSelection.swift in Sources */,
+				6BD985A11DFFB25E00CDA47F /* PreferenceCell.swift in Sources */,
 				6BD985571DFF18F300CDA47F /* JSONInitable.swift in Sources */,
-				6BD985301DFE53CE00CDA47F /* PassDeviceDelegate.swift in Sources */,
 				6BD9853C1DFF188100CDA47F /* DateExtensions.swift in Sources */,
 				6BD9854E1DFF18BB00CDA47F /* Key.swift in Sources */,
 				6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */,
+				6BD985591DFF469000CDA47F /* GenreListViewController.swift in Sources */,
 				6BD985541DFF18BB00CDA47F /* DiscoverType.swift in Sources */,
 				6BD985451DFF189B00CDA47F /* Parseable.swift in Sources */,
 				6BD985261DFD8F3F00CDA47F /* SetUpTableViewCell.swift in Sources */,
 				6BD985421DFF189B00CDA47F /* APIClient.swift in Sources */,
 				6BD985281DFD904000CDA47F /* UserDefaultsKey.swift in Sources */,
+				6BD9859F1DFF4E8400CDA47F /* UserSelectionDelegate.swift in Sources */,
 				6BD985521DFF18BB00CDA47F /* Movie.swift in Sources */,
-				6BD985321DFE599100CDA47F /* APIItemsViewController.swift in Sources */,
 				6BD985551DFF18BB00CDA47F /* HasHTTPParameters.swift in Sources */,
 				6BD9852E1DFE526300CDA47F /* PassDeviceViewController.swift in Sources */,
+				6BD985A31E00401600CDA47F /* UserNameDelegate.swift in Sources */,
 				6BD985441DFF189B00CDA47F /* TMBDEndpoint.swift in Sources */,
+				6BD985611DFF4B1200CDA47F /* PreferenceTypeListViewController.swift in Sources */,
 				6BD9854F1DFF18BB00CDA47F /* MovieEra.swift in Sources */,
 				6BD985511DFF18BB00CDA47F /* Genre.swift in Sources */,
 			);

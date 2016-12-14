@@ -10,13 +10,14 @@ import UIKit
 
 class PassDeviceViewController: UIViewController {
 
-    var delegate: PassDeviceDelegate?
+    var userNameDelegate: UserNameDelegate?
+    var userSelectionDelegate: UserSelectionDelegate?
     
     @IBOutlet var passDeviceLabel: UILabel!
     @IBOutlet var buttonView: UIView!
     
     @IBAction func onNextStep() {
-        
+        performSegue(withIdentifier: "PickPreferences", sender: nil)
     }
     
     override func viewDidLoad() {
@@ -26,18 +27,17 @@ class PassDeviceViewController: UIViewController {
         buttonView.layer.borderWidth = 2.0
         buttonView.layer.borderColor = UIColor.white.cgColor
         
-        guard let users = delegate?.wizardUsers,
-            let index = delegate?.wizardUserIndex,
-            users.indices.contains(index) else {
+        if let name = userNameDelegate?.currentUserName {
             
+            passDeviceLabel.text = "Pass device to\n\(name)"
+            buttonView.isHidden = false
+            
+        } else {
+            
+            // notify there was a problem and no button
+            passDeviceLabel.text = "Hmm. There was a problem. Try going back."
             buttonView.isHidden = true
-            return
         }
-        
-        let user = users[index]
-        
-        passDeviceLabel.text = "Pass device to\n\(user)"
-        buttonView.isHidden = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,14 +46,11 @@ class PassDeviceViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? PreferenceTypeListViewController {
+            
+            vc.userSelectionDelegate = userSelectionDelegate
+            vc.userNameDelegate = userNameDelegate
+        }
     }
-    */
-
 }
