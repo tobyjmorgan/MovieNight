@@ -39,7 +39,7 @@ extension TMBDEndpoint: Endpoint {
             return "/3/discover/movie"
             
         case .popularPeople:
-            return "/3/people/popular"
+            return "/3/person/popular"
             
         case .movie(_), .person(_):
             return "" // TODO: coplete these cases

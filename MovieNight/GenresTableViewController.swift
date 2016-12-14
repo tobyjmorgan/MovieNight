@@ -1,5 +1,5 @@
 //
-//  GenreListViewController.swift
+//  GenresTableViewController.swift
 //  MovieNight
 //
 //  Created by redBred LLC on 12/12/16.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-class GenreListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GenresTableViewController: UITableViewController {
 
     let client = TMBDAPIClient()
+    let maxCount = 3
     
-    @IBOutlet var userNameLabel: UILabel!
-    @IBOutlet var tableView: UITableView!
     @IBOutlet var pickCountLabel: UILabel!
 
-    var userNameDelegate: UserNameDelegate?
     var userSelectionDelegate: UserSelectionDelegate?
     
     var genres: [Genre] = [] {
@@ -27,13 +25,6 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        if let name = userNameDelegate?.currentUserName {
-            userNameLabel.text = name
-        }
         
         let endpoint = TMBDEndpoint.genres
         client.fetch(endpoint: endpoint, parse: endpoint.parser) { result in
@@ -79,7 +70,7 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
             count = selectedRows.count
         }
 
-        pickCountLabel.text = "You have picked\n\(count)/3"
+        pickCountLabel.text = "You have picked \(count)/\(maxCount)"
     }
     
     func markCellAsSelected(cell: UITableViewCell) {
@@ -100,24 +91,23 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return genres.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GenreCell", for: indexPath)
         
+        // clear out any residual stuff from cell's former life
         cell.textLabel?.text = ""
         cell.tag = 0
         cell.isSelected = false
-        
-        tableView.deselectRow(at: indexPath, animated: true)
         markCellAsUnselected(cell: cell)
         
         if genres.indices.contains(indexPath.row) {
@@ -129,8 +119,8 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
             if let selectedGenres = userSelectionDelegate?.userSelection.selectedGenres {
                 
                 if selectedGenres.contains(where: { $0.id == genre.id }) {
-                    
-                    tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+
+                    cell.isSelected = true
                     markCellAsSelected(cell: cell)
                 }
             }
@@ -141,7 +131,7 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
             markCellAsSelected(cell: cell)
@@ -150,7 +140,7 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
                 let firstIndexPath = selectedIndexPaths.first,
                 let oldCell = tableView.cellForRow(at: firstIndexPath) {
                 
-                if selectedIndexPaths.count > 3 {
+                if selectedIndexPaths.count > maxCount {
                     tableView.deselectRow(at: firstIndexPath, animated: true)
                     markCellAsUnselected(cell: oldCell)
                 }
@@ -160,7 +150,7 @@ class GenreListViewController: UIViewController, UITableViewDataSource, UITableV
         updatePickCountLabel()
     }
 
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         if let cell = tableView.cellForRow(at: indexPath) {
             markCellAsUnselected(cell: cell)

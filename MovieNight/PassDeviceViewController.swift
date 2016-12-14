@@ -49,6 +49,11 @@ class PassDeviceViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PreferenceTypeListViewController {
             
+            if let name = userNameDelegate?.currentUserName {
+                
+                vc.navigationItem.title = name
+            }
+
             vc.userSelectionDelegate = userSelectionDelegate
             vc.userNameDelegate = userNameDelegate
         }

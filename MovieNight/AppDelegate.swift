@@ -25,12 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sets shadow (line below the bar) to a blank image
         UINavigationBar.appearance().shadowImage = UIImage()
         // Sets the translucent background color
-        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        UINavigationBar.appearance().backgroundColor = UIColor.TMRGBA(red: 106, green: 196, blue: 253, alpha: 100)
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().isTranslucent = true
         // Set font color of navigation bar
-        UINavigationBar.appearance().tintColor = .darkGray
-        
+        UINavigationBar.appearance().tintColor = .white
+                
         return true
     }
 

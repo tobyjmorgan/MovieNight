@@ -16,7 +16,6 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
     
     let client = TMBDAPIClient()
     
-    @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var buttonView: UIView!
     @IBOutlet var summaryLabel: UILabel!
@@ -34,10 +33,6 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
         buttonView.layer.borderWidth = 2.0
         buttonView.layer.borderColor = UIColor.white.cgColor
 
-        if let name = userNameDelegate?.currentUserName {
-            userNameLabel.text = name
-        }
-        
         updateSummary()
     }
 
@@ -118,9 +113,21 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? GenreListViewController {
+        if let vc = segue.destination as? GenresTableViewController {
             
-            vc.userNameDelegate = userNameDelegate
+            vc.navigationItem.title = "Genres"
+            vc.userSelectionDelegate = userSelectionDelegate
+        }
+        
+        if let vc = segue.destination as? ErasTableViewController {
+            
+            vc.navigationItem.title = "Eras"
+            vc.userSelectionDelegate = userSelectionDelegate
+        }
+
+        if let vc = segue.destination as? PeopleCollectionViewController {
+            
+            vc.navigationItem.title = "People"
             vc.userSelectionDelegate = userSelectionDelegate
         }
     }

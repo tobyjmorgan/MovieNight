@@ -34,7 +34,7 @@
 		6BD985541DFF18BB00CDA47F /* DiscoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */; };
 		6BD985551DFF18BB00CDA47F /* HasHTTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9854D1DFF18BB00CDA47F /* HasHTTPParameters.swift */; };
 		6BD985571DFF18F300CDA47F /* JSONInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985561DFF18F300CDA47F /* JSONInitable.swift */; };
-		6BD985591DFF469000CDA47F /* GenreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985581DFF469000CDA47F /* GenreListViewController.swift */; };
+		6BD985591DFF469000CDA47F /* GenresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985581DFF469000CDA47F /* GenresTableViewController.swift */; };
 		6BD9855B1DFF480200CDA47F /* UserSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855A1DFF480200CDA47F /* UserSelection.swift */; };
 		6BD9855D1DFF489700CDA47F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855C1DFF489700CDA47F /* Model.swift */; };
 		6BD9855F1DFF4A4100CDA47F /* PreferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */; };
@@ -42,6 +42,9 @@
 		6BD9859F1DFF4E8400CDA47F /* UserSelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */; };
 		6BD985A11DFFB25E00CDA47F /* PreferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A01DFFB25D00CDA47F /* PreferenceCell.swift */; };
 		6BD985A31E00401600CDA47F /* UserNameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A21E00401600CDA47F /* UserNameDelegate.swift */; };
+		6BD985A51E01822600CDA47F /* ErasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A41E01822600CDA47F /* ErasTableViewController.swift */; };
+		6BD985A71E0186A600CDA47F /* TMRGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A61E0186A600CDA47F /* TMRGBA.swift */; };
+		6BD985A91E019A9E00CDA47F /* PeopleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A81E019A9E00CDA47F /* PeopleCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +98,7 @@
 		6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverType.swift; sourceTree = "<group>"; };
 		6BD9854D1DFF18BB00CDA47F /* HasHTTPParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasHTTPParameters.swift; sourceTree = "<group>"; };
 		6BD985561DFF18F300CDA47F /* JSONInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitable.swift; sourceTree = "<group>"; };
-		6BD985581DFF469000CDA47F /* GenreListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreListViewController.swift; sourceTree = "<group>"; };
+		6BD985581DFF469000CDA47F /* GenresTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresTableViewController.swift; sourceTree = "<group>"; };
 		6BD9855A1DFF480200CDA47F /* UserSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelection.swift; sourceTree = "<group>"; };
 		6BD9855C1DFF489700CDA47F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceType.swift; sourceTree = "<group>"; };
@@ -103,6 +106,9 @@
 		6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionDelegate.swift; sourceTree = "<group>"; };
 		6BD985A01DFFB25D00CDA47F /* PreferenceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceCell.swift; sourceTree = "<group>"; };
 		6BD985A21E00401600CDA47F /* UserNameDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameDelegate.swift; sourceTree = "<group>"; };
+		6BD985A41E01822600CDA47F /* ErasTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErasTableViewController.swift; sourceTree = "<group>"; };
+		6BD985A61E0186A600CDA47F /* TMRGBA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMRGBA.swift; sourceTree = "<group>"; };
+		6BD985A81E019A9E00CDA47F /* PeopleCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +173,9 @@
 				6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */,
 				6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */,
 				6BD985A01DFFB25D00CDA47F /* PreferenceCell.swift */,
-				6BD985581DFF469000CDA47F /* GenreListViewController.swift */,
+				6BD985581DFF469000CDA47F /* GenresTableViewController.swift */,
+				6BD985A41E01822600CDA47F /* ErasTableViewController.swift */,
+				6BD985A81E019A9E00CDA47F /* PeopleCollectionViewController.swift */,
 				6BD984F91DFD893600CDA47F /* Main.storyboard */,
 				6BD984FC1DFD893600CDA47F /* Assets.xcassets */,
 				6BD984FE1DFD893600CDA47F /* LaunchScreen.storyboard */,
@@ -213,6 +221,7 @@
 			children = (
 				6BD9853A1DFF188100CDA47F /* DateExtensions.swift */,
 				6BD9853B1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift */,
+				6BD985A61E0186A600CDA47F /* TMRGBA.swift */,
 			);
 			name = HomeGrown;
 			sourceTree = "<group>";
@@ -374,6 +383,7 @@
 				6BD985241DFD8F1800CDA47F /* SetUpViewController.swift in Sources */,
 				6BD9855F1DFF4A4100CDA47F /* PreferenceType.swift in Sources */,
 				6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */,
+				6BD985A71E0186A600CDA47F /* TMRGBA.swift in Sources */,
 				6BD985431DFF189B00CDA47F /* TMBDAPIClient.swift in Sources */,
 				6BD984F81DFD893600CDA47F /* ViewController.swift in Sources */,
 				6BD985531DFF18BB00CDA47F /* Person.swift in Sources */,
@@ -385,12 +395,13 @@
 				6BD9853C1DFF188100CDA47F /* DateExtensions.swift in Sources */,
 				6BD9854E1DFF18BB00CDA47F /* Key.swift in Sources */,
 				6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */,
-				6BD985591DFF469000CDA47F /* GenreListViewController.swift in Sources */,
+				6BD985591DFF469000CDA47F /* GenresTableViewController.swift in Sources */,
 				6BD985541DFF18BB00CDA47F /* DiscoverType.swift in Sources */,
 				6BD985451DFF189B00CDA47F /* Parseable.swift in Sources */,
 				6BD985261DFD8F3F00CDA47F /* SetUpTableViewCell.swift in Sources */,
 				6BD985421DFF189B00CDA47F /* APIClient.swift in Sources */,
 				6BD985281DFD904000CDA47F /* UserDefaultsKey.swift in Sources */,
+				6BD985A91E019A9E00CDA47F /* PeopleCollectionViewController.swift in Sources */,
 				6BD9859F1DFF4E8400CDA47F /* UserSelectionDelegate.swift in Sources */,
 				6BD985521DFF18BB00CDA47F /* Movie.swift in Sources */,
 				6BD985551DFF18BB00CDA47F /* HasHTTPParameters.swift in Sources */,
@@ -398,6 +409,7 @@
 				6BD985A31E00401600CDA47F /* UserNameDelegate.swift in Sources */,
 				6BD985441DFF189B00CDA47F /* TMBDEndpoint.swift in Sources */,
 				6BD985611DFF4B1200CDA47F /* PreferenceTypeListViewController.swift in Sources */,
+				6BD985A51E01822600CDA47F /* ErasTableViewController.swift in Sources */,
 				6BD9854F1DFF18BB00CDA47F /* MovieEra.swift in Sources */,
 				6BD985511DFF18BB00CDA47F /* Genre.swift in Sources */,
 			);
@@ -648,6 +660,7 @@
 				6BD9851C1DFD893700CDA47F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BD9851D1DFD893700CDA47F /* Build configuration list for PBXNativeTarget "MovieNightTests" */ = {
 			isa = XCConfigurationList;
@@ -656,6 +669,7 @@
 				6BD9851F1DFD893700CDA47F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6BD985201DFD893700CDA47F /* Build configuration list for PBXNativeTarget "MovieNightUITests" */ = {
 			isa = XCConfigurationList;
@@ -664,6 +678,7 @@
 				6BD985221DFD893700CDA47F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

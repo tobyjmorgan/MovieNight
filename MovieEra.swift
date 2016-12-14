@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MovieEra {
+enum MovieEra: Int {
     case recents
     case decade2000s
     case decade90s
@@ -20,7 +20,7 @@ enum MovieEra {
 }
 
 extension MovieEra {
-    var allValues: [MovieEra] {
+    static var allValues: [MovieEra] {
         return [.recents, .decade2000s, .decade90s, .decade80s, .decade70s, .oldClassics, .earliestMovies, .luckDip]
     }
 }
