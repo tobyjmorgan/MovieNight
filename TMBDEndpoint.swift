@@ -9,11 +9,12 @@
 import Foundation
 
 typealias ID = Int
+typealias PageNumber = Int
 
 enum TMBDEndpoint {
     case genres
     case discover(DiscoverType)
-    case popularPeople
+    case popularPeople(PageNumber)
     case movie(ID)
     case person(ID)
 }
@@ -75,7 +76,8 @@ extension TMBDEndpoint: Endpoint {
                 parameters[Key.with_people.rawValue] = "\(actorID)"
             }
             
-        case .popularPeople:
+        case .popularPeople(let page):
+            parameters[Key.page.rawValue] = page
             parameters[Key.sort_by.rawValue] = Key.popularity.rawValue + ".desc"
             
         default:

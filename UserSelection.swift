@@ -71,18 +71,26 @@ extension UserSelection: CustomStringConvertible {
     }
     
     var description: String {
+        
         var returnString = ""
         
+        if selectedGenresDescription != "" ||
+            selectedErasDescription != "" ||
+            selectedPeopleDescription != "" {
+            
+            returnString += "Selections:\n\n"
+        }
+        
         if selectedGenresDescription != "" {
-            returnString += "Genres: \(selectedGenresDescription)\n"
+            returnString += "\(selectedGenresDescription)\n"
         }
         
         if selectedErasDescription != "" {
-            returnString += "Eras: \(selectedErasDescription)\n"
+            returnString += "\(selectedErasDescription)\n"
         }
 
         if selectedPeopleDescription != "" {
-            returnString += "People: \(selectedPeopleDescription)\n"
+            returnString += "\(selectedPeopleDescription)\n"
         }
 
         return returnString

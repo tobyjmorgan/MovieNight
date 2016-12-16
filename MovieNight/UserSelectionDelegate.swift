@@ -8,9 +8,16 @@
 
 import Foundation
 
+enum MoveToNextUserResult {
+    case readyForNextUser
+    case thatWasTheLastOne
+}
+
 protocol UserSelectionDelegate {
     var userSelection: UserSelection { get }
-    func onUserCompletedMakingSelections()
+    func onMoveOnToNextUser() -> MoveToNextUserResult
+    func goingBack()
+    var allSelections: [UserSelection] { get }
 }
 
 extension Model: UserSelectionDelegate {
@@ -20,18 +27,31 @@ extension Model: UserSelectionDelegate {
         return userSelections[currentUserIndex]
     }
     
-    func onUserCompletedMakingSelections() {
+    func onMoveOnToNextUser() -> MoveToNextUserResult {
         
         currentUserIndex += 1
         
         if currentUserIndex >= userSelections.count {
             
             // our selection process has completed
-            
-        } else {
-            
-            // start selection for next user
+            return .thatWasTheLastOne
+        }
+
+        // start selection for next user
+        return .readyForNextUser
+    }
+    
+    func goingBack() {
+        currentUserIndex -= 1
+        
+        if currentUserIndex < 0 {
+            currentUserIndex = 0
         }
     }
+    
+    var allSelections: [UserSelection] {
+        return userSelections
+    }
+
 }
 

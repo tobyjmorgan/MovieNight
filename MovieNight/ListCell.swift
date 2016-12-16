@@ -1,5 +1,5 @@
 //
-//  PreferenceCell.swift
+//  ListCell.swift
 //  MovieNight
 //
 //  Created by redBred LLC on 12/15/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PreferenceCell: UITableViewCell {
+class ListCell: UITableViewCell {
 
     @IBOutlet var titleLabel: UILabel!
     
@@ -20,7 +20,14 @@ class PreferenceCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            
+            accessoryType = UITableViewCellAccessoryType.checkmark
+            
+        } else {
+            
+            accessoryType = UITableViewCellAccessoryType.none
+        }
     }
 
 }

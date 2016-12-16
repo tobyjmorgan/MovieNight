@@ -10,6 +10,7 @@ import UIKit
 
 class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditUserDelegate {
 
+    let sounds = SoundManager()
     var model: Model? = nil
     let defaults = UserDefaults.standard
     var currentUserIndex: Int?

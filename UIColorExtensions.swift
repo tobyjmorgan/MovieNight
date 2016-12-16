@@ -1,5 +1,5 @@
 //
-//  TMRGBA.swift
+//  UIColorExtensions.swift
 //  TrueFalseStarter
 //
 //  Created by redBred LLC on 10/28/16.

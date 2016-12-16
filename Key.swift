@@ -32,4 +32,5 @@ enum Key: HTTPKey {
     case biography
     
     case results
+    case page
 }

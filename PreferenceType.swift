@@ -28,7 +28,7 @@ extension PreferenceType: CustomStringConvertible {
         case .eras:
             return "Pick Movie Eras"
         case .people:
-            return "Pick Famous People"
+            return "Pick Movie Stars"
         }
     }
 }
