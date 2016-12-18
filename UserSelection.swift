@@ -16,7 +16,7 @@ class UserSelection {
 
 extension UserSelection: CustomStringConvertible {
 
-    private var selectedGenresDescription: String {
+    var selectedGenresDescription: String {
         
         var descriptionString = ""
         
@@ -34,7 +34,7 @@ extension UserSelection: CustomStringConvertible {
         return descriptionString
     }
     
-    private var selectedErasDescription: String {
+    var selectedErasDescription: String {
         
         var descriptionString = ""
         
@@ -52,7 +52,7 @@ extension UserSelection: CustomStringConvertible {
         return descriptionString
     }
     
-    private var selectedPeopleDescription: String {
+    var selectedPeopleDescription: String {
         
         var descriptionString = ""
         
@@ -96,3 +96,4 @@ extension UserSelection: CustomStringConvertible {
         return returnString
     }
 }
+

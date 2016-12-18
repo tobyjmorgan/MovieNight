@@ -23,12 +23,6 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
         }
     }
     
-    // TODO: just hardcoding for now - in a real app, would query API Configuration
-    // and store in UserDefaults
-    var photoRootPath: String {
-        return "https://image.tmdb.org/t/p/w185"
-    }
-
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var instructionLabel: UILabel!
     @IBOutlet var pickCountLabel: UILabel!
@@ -64,7 +58,7 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
             count = selected.count
         }
         
-        pickCountLabel.text = "You have picked \(count)/\(maxPickCount)"
+        pickCountLabel.text = "You have picked \(initiallyPicked.count + count)/\(maxPickCount)"
     }
     
     func saveSelections() {
@@ -118,7 +112,7 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
             
             // set the cell values
             cell.nameLabel?.text = item.titleForItem
-            cell.photoURL = photoRootPath + item.photoURL
+            cell.photoURL = item.photoURL
             
             // pretty things up a bit
             cell.cellContainer.layer.cornerRadius = 10.0
@@ -147,7 +141,7 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
         
         if let selectedIndexPaths = collectionView.indexPathsForSelectedItems {
             
-            if selectedIndexPaths.count >= maxPickCount {
+            if (initiallyPicked.count + selectedIndexPaths.count) >= maxPickCount {
                 maximumSelected()
                 return false
             }

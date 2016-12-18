@@ -47,9 +47,7 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
         tableView.delegate = self
         tableView.dataSource = self
         
-        buttonView.layer.cornerRadius = 10.0
-        buttonView.layer.borderWidth = 2.0
-        buttonView.layer.borderColor = UIColor.white.cgColor
+        buttonView.myWhiteBorder()
 
         updateSummary()
     }
@@ -214,7 +212,7 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
                 }
             }
 
-            vc.navigationItem.title = "Movie Stars"
+            vc.navigationItem.title = "Stars"
             vc.instruction = "Pick your favorite stars..."
             
             if let selected = userSelectionDelegate?.userSelection.selectedPeople {

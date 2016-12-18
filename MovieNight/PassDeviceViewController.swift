@@ -12,7 +12,7 @@ class PassDeviceViewController: UIViewController {
 
     var userNameDelegate: UserNameDelegate?
     var userSelectionDelegate: UserSelectionDelegate?
-    
+        
     @IBOutlet var passDeviceLabel: UILabel!
     @IBOutlet var buttonView: UIView!
     
@@ -23,9 +23,7 @@ class PassDeviceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        buttonView.layer.cornerRadius = 10.0
-        buttonView.layer.borderWidth = 2.0
-        buttonView.layer.borderColor = UIColor.white.cgColor
+        buttonView.myWhiteBorder()
         
         if let name = userNameDelegate?.currentUserName {
             
@@ -48,7 +46,8 @@ class PassDeviceViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if isMovingToParentViewController {
+        if let nav = navigationController,
+            nav.isBeingDismissed {
             
             userSelectionDelegate?.goingBack()
         }

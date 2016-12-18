@@ -12,7 +12,8 @@ typealias GenreID = Int
 typealias PersonID = Int
 
 enum DiscoverType {
-    case moviesByGenre(GenreID)
+    case moviesByGenresActors(MovieEra?, [GenreID], [PersonID])
+    case moviesByGenres(MovieEra?, [GenreID])
+    case moviesByActors(MovieEra?, [PersonID])
     case moviesByEra(MovieEra)
-    case moviesByActor(PersonID)
 }

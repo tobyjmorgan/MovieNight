@@ -12,4 +12,5 @@ enum UserDefaultsKey: String {
     
     case everBeenRunBefore
     case usersArray
+    case photoRootPath
 }

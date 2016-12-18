@@ -9,26 +9,26 @@
 import Foundation
 
 enum PreferenceType: Int {
-    case genres
     case eras
+    case genres
     case people
 }
 
 extension PreferenceType {
     static var allValues: [PreferenceType] {
-        return [.genres, .eras, .people]
+        return [.eras, .genres, .people]
     }
 }
 
 extension PreferenceType: CustomStringConvertible {
     var description: String {
         switch self {
-        case .genres:
-            return "Pick Genres"
         case .eras:
             return "Pick Movie Eras"
+        case .genres:
+            return "Pick Genres"
         case .people:
-            return "Pick Movie Stars"
+            return "Pick Stars"
         }
     }
 }

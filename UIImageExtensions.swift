@@ -11,10 +11,21 @@ import UIKit
 
 extension UIImage {
     
+    static var photoRootPath: String {
+        let defaults = UserDefaults.standard
+        
+        if let photoPath = defaults.value(forKey: UserDefaultsKey.photoRootPath.rawValue) as? String {
+            return photoPath
+        }
+        
+        return ""
+    }
+    
+
     static func getImageAsynchronously(urlString: String?, completion: @escaping (UIImage) -> ()) {
         
         if let urlString = urlString,
-           let url = URL(string: urlString) {
+           let url = URL(string: photoRootPath + urlString) {
             
             let session = URLSession(configuration: URLSessionConfiguration.default)
             

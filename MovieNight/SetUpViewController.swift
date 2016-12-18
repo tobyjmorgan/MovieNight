@@ -49,15 +49,18 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         
-        buttonView.layer.cornerRadius = 10.0
-        buttonView.layer.borderWidth = 2.0
-        buttonView.layer.borderColor = UIColor.white.cgColor
+        buttonView.myWhiteBorder()
         
         if !defaults.bool(forKey: UserDefaultsKey.everBeenRunBefore.rawValue) {
             
             setUsers(users: ["Watcher 1", "Watcher 2"])
             defaults.set(true, forKey: UserDefaultsKey.everBeenRunBefore.rawValue)
+            defaults.synchronize()
         }
+
+        // TODO: just hardcoding in UserDefaults - in a real app, would query API Configuration first
+        defaults.setValue("https://image.tmdb.org/t/p/w185", forKey: UserDefaultsKey.photoRootPath.rawValue)
+        defaults.synchronize()
         
         toggleBeginButton()
     }
@@ -99,23 +102,24 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func setUsers(users: [String]) {
         
         defaults.set(users, forKey: UserDefaultsKey.usersArray.rawValue)
+        defaults.synchronize()
         
         toggleBeginButton()
     }
     
     func toggleBeginButton() {
         
-        if let users = users,
-            users.count > 1 {
+//        if let users = users,
+//            users.count > 1 {
             
             // enable button
             buttonView.isHidden = false
             
-        } else {
-            
-            // disable button
-            buttonView.isHidden = true
-        }
+//        } else {
+//
+//            // disable button
+//            buttonView.isHidden = true
+//        }
         
     }
     

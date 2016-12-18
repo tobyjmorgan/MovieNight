@@ -17,8 +17,8 @@ class Model {
     
     init?() {
         
-        guard let users = defaults.array(forKey: UserDefaultsKey.usersArray.rawValue) as? [String],
-            users.count > 1 else {
+        guard let users = defaults.array(forKey: UserDefaultsKey.usersArray.rawValue) as? [String] else {
+            
             return nil
         }
         

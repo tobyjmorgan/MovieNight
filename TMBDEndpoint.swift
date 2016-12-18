@@ -19,6 +19,7 @@ enum TMBDEndpoint {
     case person(ID)
 }
 
+
 extension TMBDEndpoint: Endpoint {
     
     var apiKey: String {
@@ -69,11 +70,34 @@ extension TMBDEndpoint: Endpoint {
             case .moviesByEra(let era):
                 parameters.addValuesFromDictionary(dictionary: era.parameters)
                 
-            case .moviesByGenre(let genreID):
-                parameters[Key.with_genres.rawValue] = "\(genreID)"
+            case .moviesByActors(let era, let personIDs):
+                if let era = era {
+                    parameters.addValuesFromDictionary(dictionary: era.parameters)
+                }
                 
-            case .moviesByActor(let actorID):
-                parameters[Key.with_people.rawValue] = "\(actorID)"
+                let concatenated = String.concatenateWithCommas(arrayOfItems: personIDs)
+                parameters[Key.with_people.rawValue] = "\(concatenated)"
+
+            case .moviesByGenres(let era, let genreIDs):
+                if let era = era {
+                    parameters.addValuesFromDictionary(dictionary: era.parameters)
+                }
+                
+                let concatenated = String.concatenateWithCommas(arrayOfItems: genreIDs)
+                parameters[Key.with_genres.rawValue] = "\(concatenated)"
+                
+                
+            case .moviesByGenresActors(let era, let genreIDs, let personIDs):
+                if let era = era {
+                    parameters.addValuesFromDictionary(dictionary: era.parameters)
+                }
+                
+                let concatenatedPersonIDs = String.concatenateWithCommas(arrayOfItems: personIDs)
+                parameters[Key.with_people.rawValue] = "\(concatenatedPersonIDs)"
+
+                let concatenatedGenreIDs = String.concatenateWithCommas(arrayOfItems: genreIDs)
+                parameters[Key.with_genres.rawValue] = "\(concatenatedGenreIDs)"
+                
             }
             
         case .popularPeople(let page):
