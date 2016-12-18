@@ -16,6 +16,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var initiallyPicked: [Listable] = []
     
+    // generic table view, so we don't care what underlying type is passed, as long
+    // as it conforms to Listable
     var list: [Listable] = [] {
         didSet {
             tableView?.reloadData()

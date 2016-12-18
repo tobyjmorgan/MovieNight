@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// used to drive the "heat map" color coding of the results
 enum ResultPriority: Int {
     case matchOnAllCriteria
     case matchOnAllPeople

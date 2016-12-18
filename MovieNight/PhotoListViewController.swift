@@ -17,6 +17,8 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     var initiallyPicked: [Listable] = []
     
+    // generic table view, so we don't care what underlying type is passed, as long
+    // as it conforms to PhotoListable
     var list: [PhotoListable] = [] {
         didSet {
             collectionView?.reloadData()
@@ -122,14 +124,17 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
             // set up previously picked items based on initiallyPicked array
             if let index = initiallyPicked.index(where: { $0.uniqueID == item.uniqueID}) {
                 
+                // TODO: known bug - selections not consistently remembered when returning to this screen
                 // mark cell as selected
-                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredVertically)
-                cell.animateToSelected()
-                updatePickCountLabel()
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+                cell.isSelected = true
+                //cell.animateToSelected()
                 
                 // remove the item from the initially picked list
                 // since we are done with initially setting this item up
                 initiallyPicked.remove(at: index)
+
+                updatePickCountLabel()
             }
             
         }

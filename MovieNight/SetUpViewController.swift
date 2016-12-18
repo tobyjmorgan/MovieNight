@@ -126,6 +126,7 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     
+    /////////////////////////////////////////////
     // MARK: UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -185,6 +186,7 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     
+    /////////////////////////////////////////////
     // MARK: Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -202,6 +204,7 @@ class SetUpViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
 
     
+    /////////////////////////////////////////////
     // MARK: EditUserDelegate
     
     var userName: String {

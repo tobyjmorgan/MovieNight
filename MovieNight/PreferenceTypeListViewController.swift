@@ -90,7 +90,9 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
     }
     
     
+
     
+    /////////////////////////////////////////////
     // MARK: UITableViewDataSource
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,12 +135,25 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
         }
     }
     
+    
+    
+    
+    /////////////////////////////////////////////
+    // MARK: Segues
+
+    // this view controller segues to a lot of different places!!!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? ListViewController {
             
+            // ListViewController is a generic, multipurpose table view controller
+            // so here we set it up to display the information we want
+            // based on what context we are calling it
+            
             if segue.identifier == "Genres" {
                 
+                // genres are driven by the API, so we send a fetch request
                 let endpoint = TMBDEndpoint.genres
                 client.fetch(endpoint: endpoint, parse: endpoint.parser) { result in
                     
@@ -170,6 +185,7 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
                 
             } else if segue.identifier == "Eras" {
                 
+                // eras use hardcoded data, so no API request needed
                 vc.list = MovieEra.allValues
                 
                 vc.navigationItem.title = "Movie Eras"
@@ -190,6 +206,8 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
             }
         }
         
+        // to display the photos we will use a collection view controller
+        // it is also generic, although we are only using it in one context in this app
         if let vc = segue.destination as? PhotoListViewController {
             
             for page in 1...10 {
@@ -229,12 +247,14 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
             }
         }
         
+        // pass to next player
         if let vc = segue.destination as? PassDeviceViewController {
             
             vc.userNameDelegate = userNameDelegate
             vc.userSelectionDelegate = userSelectionDelegate
         }
         
+        // process the results
         if let vc = segue.destination as? ProcessingResultsViewController {
             vc.userSelectionDelegate = userSelectionDelegate
         }

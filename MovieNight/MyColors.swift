@@ -11,6 +11,7 @@ import UIKit
 
 typealias Priority = Int
 
+// shorcut to often used custom colors
 extension UIColor {
     static var myBlue: UIColor {
         return UIColor.TMRGBA(red: 106, green: 196, blue: 253, alpha: 100)

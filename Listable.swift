@@ -8,6 +8,7 @@
 
 import Foundation
 
+// allows for a generic table view that can list any Listable item
 protocol Listable {
     var uniqueID: Int { get }
     var titleForItem: String { get }

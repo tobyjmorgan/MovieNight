@@ -8,6 +8,7 @@
 
 import Foundation
 
+// allows for a generic table view that can list any PhotoListable item
 protocol PhotoListable: Listable {
     var photoURL: String { get }
 }

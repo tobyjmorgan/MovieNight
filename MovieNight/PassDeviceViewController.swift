@@ -42,17 +42,6 @@ class PassDeviceViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if let nav = navigationController,
-            nav.isBeingDismissed {
-            
-            userSelectionDelegate?.goingBack()
-        }
-    }
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PreferenceTypeListViewController {
@@ -64,6 +53,17 @@ class PassDeviceViewController: UIViewController {
 
             vc.userSelectionDelegate = userSelectionDelegate
             vc.userNameDelegate = userNameDelegate
+        }
+    }
+    
+    // Thanks to shreena shah for this neat way of hooking in to the back button
+    // http://stackoverflow.com/a/32667598
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        
+        if parent == nil {
+            // switch back to previous user in the model
+            userSelectionDelegate?.goingBack()
         }
     }
 }

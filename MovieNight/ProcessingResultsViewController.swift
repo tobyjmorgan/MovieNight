@@ -12,6 +12,7 @@ import UIKit
 // https://www.andrewcbancroft.com/2014/10/15/rotate-animation-in-swift/
 extension UIView {
     
+    // rotation transform animation on a UIView
     func rotationAnimation(rotation: CGFloat, duration: CFTimeInterval = 1.0, completionDelegate: CAAnimationDelegate? = nil) {
         
         let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
@@ -82,11 +83,16 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         
         let rotation = CGFloat(12.0 * M_PI_2)
         
+        // spinning wheels animation
         bigWheel.rotationAnimation(rotation: rotation, duration: waitDuration)
         mediumWheel.rotationAnimation(rotation: -rotation, duration: waitDuration)
         littleWheel.rotationAnimation(rotation: rotation, duration: waitDuration)
         tinyWheel.rotationAnimation(rotation: -rotation, duration: waitDuration)
         
+        // just waiting a fixed five seconds to get some results back before displaying the results
+        // given that there are multiple requests and all are coming in at different times I didn't want to drive the
+        // end of the animation by any one of these requests' results
+        // I could have put in a counter system so that when all requests had come in the animation was hidden
         Timer.scheduledTimer(timeInterval: waitDuration, target: self, selector: #selector(ProcessingResultsViewController.waitIsOver), userInfo: nil, repeats: false)
         
         fadeLabelOut()
@@ -106,9 +112,20 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         super.viewWillAppear(animated)
         
         // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
+    // Thanks to shreena shah for this neat way of hooking in to the back button
+    // http://stackoverflow.com/a/32667598
+    override func willMove(toParentViewController parent: UIViewController?) {
+        super.willMove(toParentViewController: parent)
+        
+        if parent == nil {
+            // switch back to previous user in the model
+            userSelectionDelegate?.goingBack()
+        }
+    }
+    
     func fadeLabelIn() {
         UIView.animate(withDuration: 0.5, animations: { self.processingLabel.alpha = 1.0 }) {[weak self] bool in
             self?.fadeLabelOut()
@@ -128,6 +145,8 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
     }
     
     
+    // method to show what criteria was used in the processing of results
+    // broken out by user
     func createSelectionDetailLabels() {
         
         let defaults = UserDefaults.standard
@@ -164,6 +183,7 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
                 
                 if eras.count > 0 {
                     
+                    // process cireteria in the context of one era at a time
                     for era in userSelection.selectedEras {
                         
                         processForEra(era: era, genreIds: genreIds, personIds: personIds)
@@ -171,6 +191,7 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
                     
                 } else {
                     
+                    // no eras set - so just process with nil era
                     processForEra(era: nil, genreIds: genreIds, personIds: personIds)
                     
                 }
@@ -179,23 +200,37 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
+    // this method encapsualtes the basic algorithm
+    //   - send multiple requests
+    //   - prioritize results that match ALL criteria (for a given era)
+    //   - then make requests that hit on components of the overall crieteria
     func processForEra(era: MovieEra?, genreIds: [Int], personIds: [Int]) {
         
+        // the perfect match request
         process(type: DiscoverType.moviesByGenresActors(era, genreIds, personIds), priority: .matchOnAllCriteria)
         
-        process(type: DiscoverType.moviesByActors(era, personIds), priority: .matchOnAllPeople)
+        // the all people request
+        if personIds.count > 1 {
+            process(type: DiscoverType.moviesByActors(era, personIds), priority: .matchOnAllPeople)
+        }
 
+        // the individual people requests
         for personId in personIds {
             process(type: DiscoverType.moviesByActors(era, [personId]), priority: .matchOnOnePerson)
         }
         
-        process(type: DiscoverType.moviesByGenres(era, genreIds), priority: .matchOnAllGenres)
+        // the all genres request
+        if genreIds.count > 1 {            
+            process(type: DiscoverType.moviesByGenres(era, genreIds), priority: .matchOnAllGenres)
+        }
         
+        // the individual genres requests
         for genreId in genreIds {
             process(type: DiscoverType.moviesByGenres(era, [genreId]), priority: .matchOnOneGenre)
         }
     }
     
+    // utility method that sends the fetch request and handles the results
     func process(type: DiscoverType, priority: ResultPriority) {
         
         let endpoint = TMBDEndpoint.discover(type)
@@ -205,6 +240,7 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
+    // handle results of any incoming results
     func handleResult(for controller: ProcessingResultsViewController?, priority: ResultPriority, result: APIResult<[JSONInitable]>) {
         
         switch result {
@@ -212,31 +248,67 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
             if let newMovies = payload as? [Movie],
                 let controller = controller {
                 
-                // extract the movies out of the results (strip out the priority part)
+                // extract the movies out of the current results (strip out the priority part)
                 let originalResults = controller.results
                 let originalMovies = originalResults.map { $0.movie }
                 
-                // filter out any duplicates
+                // filter out any duplicates movies from the incoming results
                 let uniqueNewMovies = newMovies.filter { !originalMovies.contains($0) }
                 
-                // create new results list
+                // turn the incoming de-duped movies in to prioritized results
                 let newResults = uniqueNewMovies.map { PrioritizableResult(priority: priority, resultObject: $0) }
+
+                // create new results list that concatenates current results and new results
                 let allResults = originalResults + newResults
                 
-                // sort by rating
+                // sort by priority (just in case results come in out of order)
                 let sortedResults = allResults.sorted { $0.priority.rawValue < $1.priority.rawValue }
                 
+                // assign this as our new results list
                 controller.results = sortedResults
             }
             
-        case .failure(_):
-            // just ignore
-            break
+        case .failure(let error):
+            handleError(error: error)
         }
     }
     
+    // handle errors by displaying an appropriate message
+    func handleError(error: Error) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayAlertSound.rawValue), object: nil)
+        
+        var message: String?
+        
+        if let netError = error as? APIClientError {
+            switch netError {
+            case .missingHTTPResponse:
+                message = "Missing HTTP Response."
+            case .unableToSerializeDataToJSON:
+                message = "Unable to serialize returned data to JSON format."
+            case .unableToParseJSON(let json):
+                message = "Unable to parse JSON data: returned JSON data printed to console for inspection."
+                print(json)
+            case .unexpectedHTTPResponseStatusCode(let code):
+                message = "Unexpected HTTP response: \(code)"
+            case .noDataReturned:
+                message = "No data returned by HTTP request."
+            case .unknownError:
+                message = "Dang! There was somekind of unknown error"
+            }
+        }
+        
+        if let message = message {
+            
+            let alert = UIAlertController(title: "Ouch!", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
     
     
+    
+    //////////////////////////////////////////////
     // MARK: UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -252,11 +324,14 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         // clear out any residual stuff from cell's former life
         cell.titleLabel?.text = ""
         
+        // make sure the index path is within range
         if results.indices.contains(indexPath.row) {
             
+            // get the appropriate result
             let result = results[indexPath.row]
             let movie = result.movie
             
+            // set up the cell with the result information
             cell.photoURL = movie.posterPath
             cell.titleLabel.text = movie.title
             cell.yearLabel.text = "(\(movie.releaseDate.year))"
@@ -268,7 +343,8 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
+        // go to the movie detail screen
         lastSelectedResult = results[indexPath.row]
         performSegue(withIdentifier: "MovieDetail", sender: self)
     }
@@ -277,6 +353,7 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         
         if let vc = segue.destination as? MovieDetailViewController {
             
+            // let the movie detail screen know what to show
             vc.movie = lastSelectedResult?.movie
         }
     }

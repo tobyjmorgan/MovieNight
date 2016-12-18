@@ -8,6 +8,7 @@
 
 import Foundation
 
+// our simple model
 class Model {
 
     let defaults = UserDefaults.standard
@@ -17,6 +18,7 @@ class Model {
     
     init?() {
         
+        // user defaults must be set up correctly or it will fail
         guard let users = defaults.array(forKey: UserDefaultsKey.usersArray.rawValue) as? [String] else {
             
             return nil
