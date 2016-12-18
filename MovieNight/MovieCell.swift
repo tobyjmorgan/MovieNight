@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SAMCache
 
 class MovieCell: UITableViewCell {
 
@@ -18,9 +19,17 @@ class MovieCell: UITableViewCell {
     
     var photoURL: String? = nil {
         didSet {
-            UIImage.getImageAsynchronously(urlString: photoURL) { image in
+            
+            if let cachedImage = SAMCache.shared().image(forKey: photoURL) {
                 
-                self.moviePhoto.image = image
+                moviePhoto.image = cachedImage
+                
+            } else {
+                
+                UIImage.getImageAsynchronously(urlString: photoURL) { image in
+                    
+                    self.moviePhoto.image = image
+                }
             }
         }
     }

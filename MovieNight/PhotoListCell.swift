@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SAMCache
 
 class PhotoListCell: UICollectionViewCell {
  
@@ -17,9 +18,16 @@ class PhotoListCell: UICollectionViewCell {
     
     var photoURL: String? = nil {
         didSet {
-            UIImage.getImageAsynchronously(urlString: photoURL) { image in
+            if let cachedImage = SAMCache.shared().image(forKey: photoURL) {
                 
-                self.imageView.image = image
+                imageView.image = cachedImage
+                
+            } else {
+                
+                UIImage.getImageAsynchronously(urlString: photoURL) { image in
+                    
+                    self.imageView.image = image
+                }
             }
         }
     }

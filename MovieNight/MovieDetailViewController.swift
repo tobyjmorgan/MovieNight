@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SAMCache
 
 class MovieDetailViewController: UIViewController {
 
@@ -25,9 +26,18 @@ class MovieDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if let movie = movie {
-            UIImage.getImageAsynchronously(urlString: movie.posterPath) {[weak self] image in
-                self?.photo.image = image
+            
+            if let cachedImage = SAMCache.shared().image(forKey: movie.posterPath) {
+                
+                photo.image = cachedImage
+                
+            } else {
+                
+                UIImage.getImageAsynchronously(urlString: movie.posterPath) {[weak self] image in
+                    self?.photo.image = image
+                }
             }
+            
             titleLabel.text = movie.title
             overviewLabel.text = movie.overview
             releaseLabel.text = "\(movie.releaseDate.year)"
