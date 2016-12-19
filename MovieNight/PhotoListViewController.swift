@@ -182,7 +182,7 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let cellWidth = (collectionView.bounds.size.width - (4*10)) / 3
+        let cellWidth = (collectionView.bounds.size.width - (4*12)) / 3
         
         return CGSize(width: cellWidth, height: cellWidth)
     }
