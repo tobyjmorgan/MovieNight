@@ -16,6 +16,7 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
     @IBOutlet var littleWheel: UIView!
     @IBOutlet var tinyWheel: UIView!
     @IBOutlet var processingLabel: UILabel!
+    @IBOutlet var errorView: UIView!
 
     var userNameDelegate: UserNameDelegate?
     var userSelectionDelegate: UserSelectionDelegate?
@@ -52,6 +53,9 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        errorView.isHidden = true
+        errorView.layer.cornerRadius = 150
         
         bigWheel.layer.cornerRadius = 150
         mediumWheel.layer.cornerRadius = 115
@@ -226,16 +230,24 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
                 // create new results list that concatenates current results and new results
                 let allResults = originalResults + newResults
                 
-                // sort by priority (just in case results come in out of order)
-                let sortedResults = allResults.sorted { $0.priority.rawValue < $1.priority.rawValue }
+                var readyResults: [PrioritizableResult] = []
+
+                // grouped and sorted
+                for priority in ResultPriority.allValues {
+                    let priorityGroup = allResults.filter { $0.priority == priority }
+                    let sortedPriorityGroup = priorityGroup.sorted { $0.movie.voteAverage > $1.movie.voteAverage }
+                    readyResults.append(contentsOf: sortedPriorityGroup)
+                }
                 
                 // assign this as our new results list
-                controller.results = sortedResults
+                controller.results = readyResults
             }
             
         case .failure(let error):
             animationsOn = false
-            handleError(error: error)
+            if errorView.isHidden {
+                handleError(error: error)
+            }
         }
     }
     
@@ -265,16 +277,20 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
         
         if let message = message {
             
+            // needed to get model back in correct state
+            userSelectionDelegate?.goBackToPreviouStep()
+            
+            // display error style elements
+            processingLabel.text = "error"
+            errorView.isHidden = false
+            
+            // alert the user
             let alert = UIAlertController(title: "Ouch!", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: { result in self.dismissMyself() }))
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
     
-    func dismissMyself() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-
     func checkReturnCount() {
         if doneSendingRequests && doneWithFirstSpin {
             

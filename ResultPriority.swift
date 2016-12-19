@@ -19,6 +19,11 @@ enum ResultPriority: Int {
 }
 
 extension ResultPriority {
+    static var allValues: [ResultPriority] {
+        return [.matchOnAllCriteria, .matchOnAllPeople, .matchOnOnePerson, .matchOnAllGenres, .matchOnOneGenre]
+    }
+}
+extension ResultPriority {
     var color: UIColor {
         
         switch self {

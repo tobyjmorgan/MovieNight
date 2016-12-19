@@ -36,6 +36,17 @@ class PassDeviceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // remove the processing view controller from the view stack
+        if var controllers = navigationController?.viewControllers {
+            
+            let lastButOneIndex = controllers.count-2
+            
+            if let _ = controllers[lastButOneIndex] as? ProcessingViewController {
+                controllers.remove(at: lastButOneIndex)
+                navigationController?.viewControllers = controllers
+            }
+        }
+        
         buttonView.myWhiteBorder()
         
         if let name = userNameDelegate?.currentUserName {

@@ -264,11 +264,13 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
 
             vc.navigationItem.title = "Stars"
             vc.instruction = "Pick your favorite stars..."
-            
-            if let selected = userSelectionDelegate?.userSelection.selectedPeople {
-                
-                vc.initiallyPicked = selected
-            }
+
+            // caused more problems than it is worth to refresh collection view with
+            // previously selected items - especially since the list is quite dynamic
+//            if let selected = userSelectionDelegate?.userSelection.selectedPeople {
+//
+//                vc.initiallyPicked = selected
+//            }
             
             vc.dismissCompletion = {[weak self] listables in
                 

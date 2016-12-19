@@ -17,7 +17,6 @@ class ResultsViewController: UIViewController {
     var feedbackLabelStrings: [String] = []
     
     @IBOutlet var feedbackLabel: UILabel!
-    @IBOutlet var movieInfoView: UIView!
     @IBOutlet var photo: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var buttonView: UIView!
@@ -33,7 +32,8 @@ class ResultsViewController: UIViewController {
         buttonView.isHidden = true
         
         feedbackLabel.isHidden = true
-        movieInfoView.isHidden = true
+        photo.isHidden = true
+        titleLabel.isHidden = true
         
         processResults()
     }
@@ -43,6 +43,23 @@ class ResultsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // toggling the appearance of the navigation bar
+    // Thanks to Michael Garito on StackOverflow for this
+    // http://stackoverflow.com/questions/29209453/how-to-hide-a-navigation-bar-from-first-viewcontroller-in-swift
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
 
     func processResults() {
         
@@ -50,6 +67,7 @@ class ResultsViewController: UIViewController {
             badOutcome()
             return
         }
+        
         
         let allResults = delegate.allSelections.flatMap({ $0.selectedResults })
         
@@ -85,15 +103,9 @@ class ResultsViewController: UIViewController {
     
         if duplicateMovies.count == 0 {
             
-            // no common ground, make a best guess pick
-            if let movie = delegate.movieResults.first?.movie {
-                
-                displayResults(movie: movie, messages: ["No common ground...", "Picking most likely movie for you..."])
-                
-            } else {
-                
-                badOutcome()
-            }
+            // no common ground, pick one at random
+            let movie = allResults[GKRandomSource.sharedRandom().nextInt(upperBound: allResults.count)].movie
+            displayResults(movie: movie, messages: ["No common ground...", "Picking a random movie from your selections..."])
             
         } else if duplicateMovies.count == 1 {
             
@@ -132,7 +144,7 @@ class ResultsViewController: UIViewController {
         
         feedbackLabelStrings = messages + ["Your movie tonight will be..."]
         
-        displayNextMessage()
+        perform(#selector(ResultsViewController.displayNextMessage), with: nil, afterDelay: 2.0)
     }
     
     func displayNextMessage() {
@@ -140,19 +152,22 @@ class ResultsViewController: UIViewController {
         if let message = feedbackLabelStrings.first {
             
             feedbackLabelStrings.removeFirst()
+            feedbackLabel.isHidden = false
             
             // play sound
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayClickSound.rawValue), object: nil)
             
             feedbackLabel.text = message
-            perform(#selector(ResultsViewController.displayNextMessage), with: nil, afterDelay: 1.4)
+            perform(#selector(ResultsViewController.displayNextMessage), with: nil, afterDelay: 2.0)
             
         } else {
             
             // play sound
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayTadaSound.rawValue), object: nil)
             
-            movieInfoView.isHidden = false
+            photo.isHidden = false
+            titleLabel.isHidden = false
+            
             buttonView.isHidden = false
         }
     }

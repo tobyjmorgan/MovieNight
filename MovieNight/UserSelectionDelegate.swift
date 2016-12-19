@@ -73,6 +73,11 @@ extension Model: UserSelectionDelegate {
                     selectionMode = .preferencesSelection
                     movieResults = []
                     
+                    // clear out any old movie selections
+                    for selection in allSelections {
+                        selection.selectedResults = []
+                    }
+                    
                 } else {
                 
                     currentUserIndex = 0

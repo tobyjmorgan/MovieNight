@@ -33,6 +33,18 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
             // play sound
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayClickSound.rawValue), object: nil)
             
+            // capture the selected results
+            if let selections = tableView.indexPathsForSelectedRows {
+                
+                var moviePicks: [PrioritizableResult] = []
+                
+                for indexPath in selections {
+                    moviePicks.append(results[indexPath.row])
+                }
+                
+                userSelectionDelegate?.userSelection.selectedResults = moviePicks
+            }
+            
             delegate.goToNextStep()
             
             if delegate.selectionMode == .done {
@@ -56,17 +68,6 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         buttonView.myWhiteBorder()
         buttonView.isHidden = true
         
-        // remove the processing view controller from the view stack
-        if var controllers = navigationController?.viewControllers {
-            
-            let lastButOneIndex = controllers.count-2
-            
-            if let _ = controllers[lastButOneIndex] as? ProcessingViewController {
-                controllers.remove(at: lastButOneIndex)
-                navigationController?.viewControllers = controllers
-            }
-        }
-        
         if let delegate = userSelectionDelegate {
             results = delegate.movieResults
         }
@@ -82,13 +83,13 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
             
             switch selections.count {
             case 0:
-                instructionsLabel.text = "Please pick your top \(maxPickCount) movies..."
+                instructionsLabel.text = "Please pick your preferred \(maxPickCount) movies..."
                 buttonView.isHidden = true
             case 1..<maxPickCount:
-                instructionsLabel.text = "Please \(maxPickCount - selections.count) more movies..."
+                instructionsLabel.text = "...please pick \(maxPickCount - selections.count) more movies..."
                 buttonView.isHidden = true
             case maxPickCount:
-                instructionsLabel.text = "Please tap the next step button."
+                instructionsLabel.text = "...now tap the 'Next Step' button."
                 buttonView.isHidden = false
             default:
                 break
@@ -178,18 +179,6 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
             return
         }
         
-        // capture the selected results
-        if let selections = tableView.indexPathsForSelectedRows {
-            
-            var moviePicks: [PrioritizableResult] = []
-            
-            for indexPath in selections {
-                moviePicks.append(results[indexPath.row])
-            }
-            
-            userSelectionDelegate?.userSelection.selectedResults = moviePicks
-        }
-
         // pass to next player
         if let vc = segue.destination as? PassDeviceViewController {
             
