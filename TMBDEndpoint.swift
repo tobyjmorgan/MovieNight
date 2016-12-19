@@ -61,7 +61,6 @@ extension TMBDEndpoint: Endpoint {
 
             // keeping it clean!
             parameters[Key.include_adult.rawValue] = false
-            parameters[Key.release_date.rawValue + ".gte"] = "1900-01-01"
             parameters[Key.vote_count.rawValue + ".gte"] = 100
             parameters[Key.sort_by.rawValue] = Key.vote_average.rawValue + ".desc"
             
@@ -92,11 +91,17 @@ extension TMBDEndpoint: Endpoint {
                     parameters.addValuesFromDictionary(dictionary: era.parameters)
                 }
                 
-                let concatenatedPersonIDs = String.concatenateWithCommas(arrayOfItems: personIDs)
-                parameters[Key.with_people.rawValue] = "\(concatenatedPersonIDs)"
+                if personIDs.count > 0 {
+                    
+                    let concatenatedPersonIDs = String.concatenateWithCommas(arrayOfItems: personIDs)
+                    parameters[Key.with_people.rawValue] = "\(concatenatedPersonIDs)"
+                }
 
-                let concatenatedGenreIDs = String.concatenateWithCommas(arrayOfItems: genreIDs)
-                parameters[Key.with_genres.rawValue] = "\(concatenatedGenreIDs)"
+                if genreIDs.count > 0 {
+                    
+                    let concatenatedGenreIDs = String.concatenateWithCommas(arrayOfItems: genreIDs)
+                    parameters[Key.with_genres.rawValue] = "\(concatenatedGenreIDs)"
+                }
                 
             }
             

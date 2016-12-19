@@ -178,8 +178,11 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
     //   - then make requests that hit on components of the overall crieteria
     func processForEra(era: MovieEra?, genreIds: [Int], personIds: [Int]) {
         
-        // the perfect match request
-        process(type: DiscoverType.moviesByGenresActors(era, genreIds, personIds), priority: .matchOnAllCriteria)
+        if genreIds.count > 0 && personIds.count > 0 {
+            
+            // the perfect match request
+            process(type: DiscoverType.moviesByGenresActors(era, genreIds, personIds), priority: .matchOnAllCriteria)
+        }
         
         // the all people request
         if personIds.count > 1 {
@@ -199,6 +202,11 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
         // the individual genres requests
         for genreId in genreIds {
             process(type: DiscoverType.moviesByGenres(era, [genreId]), priority: .matchOnOneGenre)
+        }
+        
+        // the individual era request
+        if let era = era {
+            process(type: DiscoverType.moviesByEra(era), priority: .matchOnOneEra)
         }
     }
     

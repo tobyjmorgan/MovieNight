@@ -15,6 +15,7 @@ enum Key: HTTPKey {
     case genre_ids
     case title
     case release_date
+    case primary_release_date
     case popularity
     case vote_average
     case overview

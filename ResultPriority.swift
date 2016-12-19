@@ -16,11 +16,12 @@ enum ResultPriority: Int {
     case matchOnOnePerson
     case matchOnAllGenres
     case matchOnOneGenre
+    case matchOnOneEra
 }
 
 extension ResultPriority {
     static var allValues: [ResultPriority] {
-        return [.matchOnAllCriteria, .matchOnAllPeople, .matchOnOnePerson, .matchOnAllGenres, .matchOnOneGenre]
+        return [.matchOnAllCriteria, .matchOnAllPeople, .matchOnOnePerson, .matchOnAllGenres, .matchOnOneGenre, .matchOnOneEra]
     }
 }
 extension ResultPriority {
@@ -42,7 +43,11 @@ extension ResultPriority {
             
         case .matchOnOneGenre:
             return UIColor.clear
+            
+        case .matchOnOneEra:
+            return UIColor.clear
         }
+        
     }
 }
 

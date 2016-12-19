@@ -57,8 +57,8 @@ extension MovieEra: HasHTTPParameters {
         }
 
         return [
-            Key.release_date.rawValue + ".gte" : minYear,
-            Key.release_date.rawValue + ".lte" : maxYear
+            Key.primary_release_date.rawValue + ".gte" : minYear,
+            Key.primary_release_date.rawValue + ".lte" : maxYear
         ]
     }
 }
