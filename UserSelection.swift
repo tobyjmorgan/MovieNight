@@ -12,6 +12,7 @@ class UserSelection {
     var selectedGenres: [Genre] = []
     var selectedEras: [MovieEra] = []
     var selectedPeople: [Person] = []
+    var selectedResults: [PrioritizableResult] = []
 }
 
 extension UserSelection: CustomStringConvertible {

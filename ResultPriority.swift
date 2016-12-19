@@ -24,13 +24,13 @@ extension ResultPriority {
         switch self {
             
         case .matchOnAllCriteria:
-            return UIColor.red.withAlphaComponent(0.5)
+            return UIColor.red.withAlphaComponent(0.3)
             
         case .matchOnAllPeople:
-            return UIColor.orange.withAlphaComponent(0.4)
+            return UIColor.orange.withAlphaComponent(0.2)
             
         case .matchOnOnePerson:
-            return UIColor.yellow.withAlphaComponent(0.3)
+            return UIColor.yellow.withAlphaComponent(0.1)
             
         case .matchOnAllGenres:
             return UIColor.green.withAlphaComponent(0.1)

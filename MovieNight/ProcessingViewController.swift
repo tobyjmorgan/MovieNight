@@ -1,79 +1,64 @@
 //
-//  ProcessingResultsViewController.swift
+//  ProcessingViewController.swift
 //  MovieNight
 //
-//  Created by redBred LLC on 12/16/16.
+//  Created by redBred LLC on 12/18/16.
 //  Copyright © 2016 redBred. All rights reserved.
 //
 
 import UIKit
 
-class ProcessingResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProcessingViewController: UIViewController, CAAnimationDelegate {
 
-    let client = TMBDAPIClient()
-    
-    var results: [PrioritizableResult] = [] {
-        didSet {
-            
-            // refresh the table
-            tableView.reloadData()
-        }
-    }
-    
-    let waitDuration = 5.0
-    var lastSelectedResult: PrioritizableResult?
-    
     @IBOutlet var eggTimerView: UIView!
     @IBOutlet var bigWheel: UIView!
     @IBOutlet var mediumWheel: UIView!
     @IBOutlet var littleWheel: UIView!
     @IBOutlet var tinyWheel: UIView!
     @IBOutlet var processingLabel: UILabel!
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var buttonView: UIView!
-    @IBOutlet var userSelectionsStackView: UIStackView!
-    
-    @IBAction func onStartOver() {
-        
-        _ = navigationController?.popToRootViewController(animated: true)
+
+    var userNameDelegate: UserNameDelegate?
+    var userSelectionDelegate: UserSelectionDelegate?
+
+    let client = TMBDAPIClient()
+    var sentRequests: Int = 0
+    var returnedRequests: Int = 0
+    var doneSendingRequests: Bool = false
+
+    let spinDuration = 3.0
+    let rotation = CGFloat(6.0 * M_PI_2)
+    var animationsOn: Bool = true {
+        didSet {
+            if !animationsOn {
+                
+                stopSpinAnimation()
+            }
+        }
     }
     
-    @IBOutlet var collectionView: UICollectionView!
-    
-    var userSelectionDelegate: UserSelectionDelegate?
-    
+    // get at least one decent spin animation in before moving on
+    var doneWithFirstSpin: Bool = false {
+        didSet {
+            checkReturnCount()
+        }
+    }
+
+    var results: [PrioritizableResult] = [] {
+        didSet {
+            
+            checkReturnCount()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        eggTimerView.isHidden = false
-        view.bringSubview(toFront: eggTimerView)
-        
-        createSelectionDetailLabels()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        buttonView.myWhiteBorder()
         
         bigWheel.layer.cornerRadius = 150
         mediumWheel.layer.cornerRadius = 115
         littleWheel.layer.cornerRadius = 80
         tinyWheel.layer.cornerRadius = 45
         
-        let rotation = CGFloat(12.0 * M_PI_2)
-        
-        // spinning wheels animation
-        bigWheel.rotationAnimation(rotation: rotation, duration: waitDuration)
-        mediumWheel.rotationAnimation(rotation: -rotation, duration: waitDuration)
-        littleWheel.rotationAnimation(rotation: rotation, duration: waitDuration)
-        tinyWheel.rotationAnimation(rotation: -rotation, duration: waitDuration)
-        
-        // just waiting a fixed five seconds to get some results back before displaying the results
-        // given that there are multiple requests and all are coming in at different times I didn't want to drive the
-        // end of the animation by any one of these requests' results
-        // I could have put in a counter system so that when all requests had come in the animation was hidden
-        Timer.scheduledTimer(timeInterval: waitDuration, target: self, selector: #selector(ProcessingResultsViewController.waitIsOver), userInfo: nil, repeats: false)
-        
+        startSpinAnimation()
         fadeLabelOut()
         
         processSelections()
@@ -84,67 +69,70 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    // toggling the appearance of the navigation bar
-    // Thanks to Michael Garito on StackOverflow for this
-    // http://stackoverflow.com/questions/29209453/how-to-hide-a-navigation-bar-from-first-viewcontroller-in-swift
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    
+    
+    ////////////////////////////////////////////////////
+    // MARK: pretty animations stuff
+    
+    func startSpinAnimation() {
         
-        // Hide the navigation bar on the this view controller
-//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        // spinning wheels animation
+        bigWheel.rotationAnimation(rotation: rotation, duration: spinDuration, completionDelegate: self)
+        mediumWheel.rotationAnimation(rotation: -rotation, duration: spinDuration)
+        littleWheel.rotationAnimation(rotation: rotation, duration: spinDuration)
+        tinyWheel.rotationAnimation(rotation: -rotation, duration: spinDuration)
+    }
+    
+    func stopSpinAnimation() {
+        bigWheel.layer.removeAllAnimations()
+        mediumWheel.layer.removeAllAnimations()
+        littleWheel.layer.removeAllAnimations()
+        tinyWheel.layer.removeAllAnimations()
     }
     
     func fadeLabelIn() {
-        UIView.animate(withDuration: 0.5, animations: { self.processingLabel.alpha = 1.0 }) {[weak self] bool in
-            self?.fadeLabelOut()
+        
+        if animationsOn {
+            
+            UIView.animate(withDuration: 0.5, animations: { self.processingLabel.alpha = 1.0 }) {[weak self] bool in
+                self?.fadeLabelOut()
+            }
         }
     }
     
     func fadeLabelOut() {
-        UIView.animate(withDuration: 0.5, animations: { self.processingLabel.alpha = 0.0 }) {[weak self] bool in
-            self?.fadeLabelIn()
-        }
-    }
-    
-    func waitIsOver() {
-        UIView.animate(withDuration: 0.5, animations: {self.eggTimerView.alpha = 0.0}) {bool in
-            self.eggTimerView.isHidden = true
-        }
-    }
-    
-    
-    // method to show what criteria was used in the processing of results
-    // broken out by user
-    func createSelectionDetailLabels() {
         
-        let defaults = UserDefaults.standard
-
-        if let users = defaults.value(forKey: UserDefaultsKey.usersArray.rawValue) as? [String],
-            let delegate = userSelectionDelegate {
+        if animationsOn {
             
-            for i in 0..<users.count {
-                
-                let user = users[i]
-                let selection = delegate.allSelections[i]
-
-                let label = UILabel()
-                label.text = "\(user):\n" + String.concatenateWithCommas(arrayOfItems: [selection.selectedErasDescription, selection.selectedGenresDescription, selection.selectedPeopleDescription])
-                label.font = UIFont(name: "Helvetica", size: 12)
-                label.textColor = UIColor.white
-                label.numberOfLines = 0
-                label.lineBreakMode = .byWordWrapping
-                
-                userSelectionsStackView.addArrangedSubview(label)
+            UIView.animate(withDuration: 0.5, animations: { self.processingLabel.alpha = 0.0 }) {[weak self] bool in
+                self?.fadeLabelIn()
             }
         }
     }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if !doneWithFirstSpin {
+            doneWithFirstSpin = true
+        }
+        
+        if animationsOn {
+            startSpinAnimation()
+        }
+    }
+    
+    
+    
+    
+    ////////////////////////////////////////////////////
+    // MARK: API processing
     
     func processSelections() {
         
         if let delegate = userSelectionDelegate {
             
             for userSelection in delegate.allSelections {
-
+                
                 let eras = userSelection.selectedEras
                 let genreIds = userSelection.selectedGenres.map{ $0.id }
                 let personIds = userSelection.selectedPeople.map{ $0.id }
@@ -166,6 +154,8 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
                 
             }
         }
+        
+        doneSendingRequests = true
     }
     
     // this method encapsualtes the basic algorithm
@@ -181,14 +171,14 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
         if personIds.count > 1 {
             process(type: DiscoverType.moviesByActors(era, personIds), priority: .matchOnAllPeople)
         }
-
+        
         // the individual people requests
         for personId in personIds {
             process(type: DiscoverType.moviesByActors(era, [personId]), priority: .matchOnOnePerson)
         }
         
         // the all genres request
-        if genreIds.count > 1 {            
+        if genreIds.count > 1 {
             process(type: DiscoverType.moviesByGenres(era, genreIds), priority: .matchOnAllGenres)
         }
         
@@ -206,13 +196,20 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
             
             self?.handleResult(for: self, priority: priority, result: result)
         }
+        
+        // increment the number of requests that were sent
+        sentRequests += 1
     }
     
     // handle results of any incoming results
-    func handleResult(for controller: ProcessingResultsViewController?, priority: ResultPriority, result: APIResult<[JSONInitable]>) {
+    func handleResult(for controller: ProcessingViewController?, priority: ResultPriority, result: APIResult<[JSONInitable]>) {
         
         switch result {
         case .success(let payload):
+
+            // increment the number of returned requests
+            returnedRequests += 1
+            
             if let newMovies = payload as? [Movie],
                 let controller = controller {
                 
@@ -225,7 +222,7 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
                 
                 // turn the incoming de-duped movies in to prioritized results
                 let newResults = uniqueNewMovies.map { PrioritizableResult(priority: priority, resultObject: $0) }
-
+                
                 // create new results list that concatenates current results and new results
                 let allResults = originalResults + newResults
                 
@@ -237,6 +234,7 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
             }
             
         case .failure(let error):
+            animationsOn = false
             handleError(error: error)
         }
     }
@@ -261,68 +259,50 @@ class ProcessingResultsViewController: UIViewController, UITableViewDataSource, 
             case .noDataReturned:
                 message = "No data returned by HTTP request."
             case .unknownError:
-                message = "Dang! There was somekind of unknown error"
+                message = "Dang! There was some kind of unknown error"
             }
         }
         
         if let message = message {
             
             let alert = UIAlertController(title: "Ouch!", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: { result in self.dismissMyself() }))
             present(alert, animated: true, completion: nil)
         }
     }
+    
+    func dismissMyself() {
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
 
-    
-    
-    
-    //////////////////////////////////////////////
-    // MARK: UITableViewDataSource
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        
-        // clear out any residual stuff from cell's former life
-        cell.titleLabel?.text = ""
-        
-        // make sure the index path is within range
-        if results.indices.contains(indexPath.row) {
+    func checkReturnCount() {
+        if doneSendingRequests && doneWithFirstSpin {
             
-            // get the appropriate result
-            let result = results[indexPath.row]
-            let movie = result.movie
-            
-            // set up the cell with the result information
-            cell.photoURL = movie.posterPath
-            cell.titleLabel.text = movie.title
-            cell.yearLabel.text = "(\(movie.releaseDate.year))"
-            cell.ratingLabel.text = "Rating: \(movie.voteAverage)"
-            cell.cellFrame.backgroundColor = result.priority.color
+            if returnedRequests == sentRequests {
+                
+                // segue to view the results
+                performSegue(withIdentifier: "PassDevice", sender: self)
+            }
         }
-
-        return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        // go to the movie detail screen
-        lastSelectedResult = results[indexPath.row]
-        performSegue(withIdentifier: "MovieDetail", sender: self)
-    }
+    
+    
+    ////////////////////////////////////////////////////
+    // MARK: segue processing
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let vc = segue.destination as? MovieDetailViewController {
+        if let vc = segue.destination as? PassDeviceViewController {
             
-            // let the movie detail screen know what to show
-            vc.movie = lastSelectedResult?.movie
+            vc.userNameDelegate = userNameDelegate
+            vc.userSelectionDelegate = userSelectionDelegate
+
+            // capture the results in the delegate
+            userSelectionDelegate?.movieResults = results
         }
     }
+
+
 }

@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum SelectionMode {
+    case preferencesSelection
+    case movieSelection
+    case done
+}
+
 // our simple model
 class Model {
 
@@ -15,6 +21,9 @@ class Model {
     
     var currentUserIndex: Int
     var userSelections: [UserSelection]
+    var selectionMode: SelectionMode = .preferencesSelection
+    
+    var movieResults: [PrioritizableResult] = []
     
     init?() {
         

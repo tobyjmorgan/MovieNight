@@ -17,7 +17,20 @@ class PassDeviceViewController: UIViewController {
     @IBOutlet var buttonView: UIView!
     
     @IBAction func onNextStep() {
-        performSegue(withIdentifier: "PickPreferences", sender: nil)
+        
+        if let delegate = userSelectionDelegate {
+            
+            switch delegate.selectionMode {
+
+            case .preferencesSelection:
+                performSegue(withIdentifier: "PickPreferences", sender: nil)
+            case .movieSelection:
+                performSegue(withIdentifier: "MovieResults", sender: nil)
+            default:
+                // should never get here
+                break
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -54,6 +67,17 @@ class PassDeviceViewController: UIViewController {
             vc.userSelectionDelegate = userSelectionDelegate
             vc.userNameDelegate = userNameDelegate
         }
+        
+        if let vc = segue.destination as? MovieListViewController {
+            
+            if let name = userNameDelegate?.currentUserName {
+                
+                vc.navigationItem.title = name
+            }
+            
+            vc.userSelectionDelegate = userSelectionDelegate
+            vc.userNameDelegate = userNameDelegate
+        }
     }
     
     // Thanks to shreena shah for this neat way of hooking in to the back button
@@ -63,7 +87,7 @@ class PassDeviceViewController: UIViewController {
         
         if parent == nil {
             // switch back to previous user in the model
-            userSelectionDelegate?.goingBack()
+            userSelectionDelegate?.goBackToPreviouStep()
         }
     }
 }

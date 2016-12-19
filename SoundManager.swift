@@ -14,17 +14,20 @@ class SoundManager {
     enum Notifications: String {
         case notificationPlayClickSound
         case notificationPlayAlertSound
+        case notificationPlayTadaSound
     }
     
     // sounds
     var clickSound: SystemSoundID = 0
     var alertSound: SystemSoundID = 0
+    var tadaSound: SystemSoundID = 0
     
     init() {
         loadSounds()
         
         NotificationCenter.default.addObserver(self, selector: #selector(playClickSound), name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayClickSound.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(playAlertSound), name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayAlertSound.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playTadaSound), name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayTadaSound.rawValue), object: nil)
     }
     
     // load the specified sound
@@ -42,6 +45,7 @@ class SoundManager {
         
         loadSound(filename: "Click", systemSound: &clickSound)
         loadSound(filename: "Alert", systemSound: &alertSound)
+        loadSound(filename: "Tada", systemSound: &tadaSound)
     }
     
     @objc func playClickSound() {
@@ -50,5 +54,9 @@ class SoundManager {
 
     @objc func playAlertSound() {
         AudioServicesPlaySystemSound(alertSound)
+    }
+
+    @objc func playTadaSound() {
+        AudioServicesPlaySystemSound(tadaSound)
     }
 }

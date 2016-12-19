@@ -27,16 +27,16 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
             // play sound
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayClickSound.rawValue), object: nil)
             
-            switch delegate.onMoveOnToNextUser() {
-            
-            case .readyForNextUser:
-                // go back to the "Pass Device" screen
-                performSegue(withIdentifier: "NextUser", sender: self)
+            delegate.goToNextStep()
 
-            case .thatWasTheLastOne:
-                // we're done picking, so
+            if delegate.selectionMode == .movieSelection {
+                
+                // time to fetch results
                 performSegue(withIdentifier: "ProcessResults", sender: self)
-            
+                
+            } else {
+                
+                performSegue(withIdentifier: "NextUser", sender: self)
             }
         }
     }
@@ -135,6 +135,38 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
         }
     }
     
+    // handle errors by displaying an appropriate message
+    func handleError(error: Error) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayAlertSound.rawValue), object: nil)
+        
+        var message: String?
+        
+        if let netError = error as? APIClientError {
+            switch netError {
+            case .missingHTTPResponse:
+                message = "Missing HTTP Response."
+            case .unableToSerializeDataToJSON:
+                message = "Unable to serialize returned data to JSON format."
+            case .unableToParseJSON(let json):
+                message = "Unable to parse JSON data: returned JSON data printed to console for inspection."
+                print(json)
+            case .unexpectedHTTPResponseStatusCode(let code):
+                message = "Unexpected HTTP response: \(code)"
+            case .noDataReturned:
+                message = "No data returned by HTTP request."
+            case .unknownError:
+                message = "Dang! There was some kind of unknown error"
+            }
+        }
+        
+        if let message = message {
+            
+            let alert = UIAlertController(title: "Ouch!", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
     
     
     
@@ -155,11 +187,11 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
                 
                 // genres are driven by the API, so we send a fetch request
                 let endpoint = TMBDEndpoint.genres
-                client.fetch(endpoint: endpoint, parse: endpoint.parser) { result in
+                client.fetch(endpoint: endpoint, parse: endpoint.parser) { [weak self] result in
                     
                     switch result {
                     case .failure(let error):
-                        print(error)
+                        self?.handleError(error: error)
                     case .success(let payload):
                         if let concreteResults = payload as? [Genre] {
                             vc.list = concreteResults
@@ -249,13 +281,13 @@ class PreferenceTypeListViewController: UIViewController, UITableViewDataSource,
         
         // pass to next player
         if let vc = segue.destination as? PassDeviceViewController {
-            
             vc.userNameDelegate = userNameDelegate
             vc.userSelectionDelegate = userSelectionDelegate
         }
         
         // process the results
-        if let vc = segue.destination as? ProcessingResultsViewController {
+        if let vc = segue.destination as? ProcessingViewController {
+            vc.userNameDelegate = userNameDelegate
             vc.userSelectionDelegate = userSelectionDelegate
         }
     }
