@@ -78,6 +78,16 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    // toggling the appearance of the navigation bar
+    // Thanks to Michael Garito on StackOverflow for this
+    // http://stackoverflow.com/questions/29209453/how-to-hide-a-navigation-bar-from-first-viewcontroller-in-swift
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+        
     func updateInstructionLabel() {
         if let selections = tableView.indexPathsForSelectedRows {
             

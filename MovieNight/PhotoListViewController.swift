@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var maxPickCount: Int = 3
     var instruction: String = "Please make your selections..."
@@ -52,6 +52,22 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
         saveSelections()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    // toggling the appearance of the navigation bar
+    // Thanks to Michael Garito on StackOverflow for this
+    // http://stackoverflow.com/questions/29209453/how-to-hide-a-navigation-bar-from-first-viewcontroller-in-swift
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
     func updatePickCountLabel() {
         
         var count = 0
@@ -163,5 +179,11 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         updatePickCountLabel()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
+        let cellWidth = (collectionView.bounds.size.width - (4*10)) / 3
+        
+        return CGSize(width: cellWidth, height: cellWidth)
+    }
 }
