@@ -112,7 +112,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             // set the title
             cell.titleLabel?.text = item.titleForItem
             
-            if let index = initiallyPicked.index(where: { $0.uniqueID == item.uniqueID}) {
+            if let index = initiallyPicked.firstIndex(where: { $0.uniqueID == item.uniqueID}) {
                 
                 // remove it from the initially picked list (because we will probably change our selections)
                 initiallyPicked.remove(at: index)

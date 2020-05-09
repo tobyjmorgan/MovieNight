@@ -138,7 +138,7 @@ class PhotoListViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.cellContainer.layer.borderWidth = 2.0
             
             // set up previously picked items based on initiallyPicked array
-            if let index = initiallyPicked.index(where: { $0.uniqueID == item.uniqueID}) {
+            if let index = initiallyPicked.firstIndex(where: { $0.uniqueID == item.uniqueID}) {
                 
                 // TODO: known bug - selections not consistently remembered when returning to this screen
                 // mark cell as selected
