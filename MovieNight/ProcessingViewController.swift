@@ -27,7 +27,7 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
     var doneSendingRequests: Bool = false
 
     let spinDuration = 3.0
-    let rotation = CGFloat(6.0 * M_PI_2)
+    let rotation = CGFloat(6.0 * Double.pi/2)
     var animationsOn: Bool = true {
         didSet {
             if !animationsOn {
@@ -148,12 +148,12 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
             for userSelection in delegate.allSelections {
                 
                 let eras = userSelection.selectedEras
-                let genreIds = userSelection.selectedGenres.map{ $0.id }
-                let personIds = userSelection.selectedPeople.map{ $0.id }
+                let genreIds = userSelection.selectedGenres.map { $0.id }
+                let personIds = userSelection.selectedPeople.map { $0.id }
                 
                 if eras.count > 0 {
                     
-                    // process cireteria in the context of one era at a time
+                    // process criteria in the context of one era at a time
                     for era in userSelection.selectedEras {
                         
                         processForEra(era: era, genreIds: genreIds, personIds: personIds)
@@ -175,7 +175,7 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
     // this method encapsualtes the basic algorithm
     //   - send multiple requests
     //   - prioritize results that match ALL criteria (for a given era)
-    //   - then make requests that hit on components of the overall crieteria
+    //   - then make requests that hit on components of the overall criteria
     func processForEra(era: MovieEra?, genreIds: [Int], personIds: [Int]) {
         
         if genreIds.count > 0 && personIds.count > 0 {
@@ -216,7 +216,10 @@ class ProcessingViewController: UIViewController, CAAnimationDelegate {
         let endpoint = TMBDEndpoint.discover(type)
         client.fetch(endpoint: endpoint, parse: endpoint.parser)  {[weak self] result in
             
-            self?.handleResult(for: self, priority: priority, result: result)
+            if let strongSelf = self {
+                
+                strongSelf.handleResult(for: self, priority: priority, result: result)
+            }
         }
         
         // increment the number of requests that were sent
