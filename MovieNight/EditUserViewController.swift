@@ -44,7 +44,7 @@ class EditUserViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        if (self.isMovingFromParentViewController) {
+        if (self.isMovingFromParent) {
             if let name = userNameLabel.text {
                 
                 delegate?.onDismissEditUser(newName: name)

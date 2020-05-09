@@ -33,6 +33,38 @@
             endingLineNumber = "63"
             landmarkName = "processResults()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MovieNight.ResultsViewController.processResults() -&gt; ()"
+                  moduleName = "MovieNight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tobyjmorgan/Documents/GitHub/MovieNight/MovieNight/ResultsViewController.swift"
+                  timestampString = "610750792.013711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "223">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MovieNight.UserSelection) -&gt; Swift.Array&lt;MovieNight.PrioritizableResult&gt; in MovieNight.ResultsViewController.processResults() -&gt; ()"
+                  moduleName = "MovieNight"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tobyjmorgan/Documents/GitHub/MovieNight/MovieNight/ResultsViewController.swift"
+                  timestampString = "610750792.015795"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,54 +96,6 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "handleResult(for:priority:result:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieNight.ProcessingViewController.handleResult (for : Swift.Optional&lt;MovieNight.ProcessingViewController&gt;, priority : MovieNight.ResultPriority, result : MovieNight.APIResult&lt;Swift.Array&lt;MovieNight.JSONInitable&gt;&gt;) -&gt; ()"
-                  moduleName = "MovieNight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tobyjmorgan/Desktop/SpriteKitGames/MovieNight/MovieNight/ProcessingViewController.swift"
-                  timestampString = "503850025.876707"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "439">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieNight.ProcessingViewController.handleResult (for : Swift.Optional&lt;MovieNight.ProcessingViewController&gt;, priority : MovieNight.ResultPriority, result : MovieNight.APIResult&lt;Swift.Array&lt;MovieNight.JSONInitable&gt;&gt;) -&gt; ()"
-                  moduleName = "MovieNight"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tobyjmorgan/Desktop/SpriteKitGames/MovieNight/MovieNight/ProcessingViewController.swift"
-                  timestampString = "503850025.880589"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "514">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MovieNight/PhotoListViewController.swift"
-            timestampString = "503849955.921214"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

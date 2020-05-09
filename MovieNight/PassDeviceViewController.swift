@@ -93,8 +93,8 @@ class PassDeviceViewController: UIViewController {
     
     // Thanks to shreena shah for this neat way of hooking in to the back button
     // http://stackoverflow.com/a/32667598
-    override func willMove(toParentViewController parent: UIViewController?) {
-        super.willMove(toParentViewController: parent)
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
         
         if parent == nil {
             // switch back to previous user in the model

@@ -139,7 +139,7 @@ class ResultsViewController: UIViewController {
         perform(#selector(ResultsViewController.displayNextMessage), with: nil, afterDelay: 2.0)
     }
     
-    func displayNextMessage() {
+    @objc func displayNextMessage() {
         
         if let message = feedbackLabelStrings.first {
             

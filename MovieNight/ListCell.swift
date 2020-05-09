@@ -22,11 +22,11 @@ class ListCell: UITableViewCell {
 
         if selected {
             
-            accessoryType = UITableViewCellAccessoryType.checkmark
+            accessoryType = UITableViewCell.AccessoryType.checkmark
             
         } else {
             
-            accessoryType = UITableViewCellAccessoryType.none
+            accessoryType = UITableViewCell.AccessoryType.none
         }
     }
 
