@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0D85280718E53CB6201528F7F7152085 /* Pods-MovieNight-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieNight-acknowledgements.plist"; sourceTree = "<group>"; };
-		0EE973D99AB428F17C3E02D2197AD73A /* Pods_MovieNightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MovieNightTests.framework; path = "Pods-MovieNightTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EE973D99AB428F17C3E02D2197AD73A /* Pods_MovieNightTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNightTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F81CB180678935C3E3228049469EE05 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11115B49862F7CF8A6FCBC3A763D84FB /* Pods-MovieNight-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MovieNight-dummy.m"; sourceTree = "<group>"; };
 		15D6D5785953B6CF4F7C17A21B8442AB /* Pods-MovieNightUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MovieNightUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -53,29 +53,29 @@
 		30BC0990AF077E352D04B97CC07BD21E /* SAMCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMCache.h; path = SAMCache/SAMCache.h; sourceTree = "<group>"; };
 		3BE9DC546EBE8F333A80F02BD28D6F28 /* Pods-MovieNightTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieNightTests.release.xcconfig"; sourceTree = "<group>"; };
 		444C62CD76CE4A04FE0A0363F1AC91DA /* Pods-MovieNight-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MovieNight-frameworks.sh"; sourceTree = "<group>"; };
-		46DF7773DC512F88133F0CDF2386D377 /* Pods_MovieNight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MovieNight.framework; path = "Pods-MovieNight.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46DF7773DC512F88133F0CDF2386D377 /* Pods_MovieNight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AF532C8D0105D45956B5786EDA6775C /* Pods-MovieNightTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MovieNightTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4B35B249019DB5B10CAC41A6513DF756 /* SAMCache+Image.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SAMCache+Image.h"; path = "SAMCache/SAMCache+Image.h"; sourceTree = "<group>"; };
 		4FEA8FF4F40E90BF04CCA67884295713 /* SAMCache.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAMCache.xcconfig; sourceTree = "<group>"; };
 		50D06D2C3D712E1817A7C2883D5AE6E8 /* SAMCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMCache.m; path = SAMCache/SAMCache.m; sourceTree = "<group>"; };
 		543D0C105DCB8C8B66DE6798CF297070 /* Pods-MovieNightTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MovieNightTests-umbrella.h"; sourceTree = "<group>"; };
-		58564C84C7E41DC2DE664BF37F4C05B1 /* Pods-MovieNight.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MovieNight.modulemap"; sourceTree = "<group>"; };
+		58564C84C7E41DC2DE664BF37F4C05B1 /* Pods-MovieNight.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MovieNight.modulemap"; sourceTree = "<group>"; };
 		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		61C0025788E70A7808EBCEB8620199A7 /* SAMCache+Image.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SAMCache+Image.m"; path = "SAMCache/SAMCache+Image.m"; sourceTree = "<group>"; };
-		64F191E0B71ADFD9D149778DABF1FBEC /* Pods-MovieNightUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MovieNightUITests.modulemap"; sourceTree = "<group>"; };
+		64F191E0B71ADFD9D149778DABF1FBEC /* Pods-MovieNightUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MovieNightUITests.modulemap"; sourceTree = "<group>"; };
 		6E7F3BF749C37F8647184D9CB4E5E8B4 /* Pods-MovieNightUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MovieNightUITests-frameworks.sh"; sourceTree = "<group>"; };
 		7029FDB43EB12BA08DCED980B5F4F746 /* Pods-MovieNight-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MovieNight-resources.sh"; sourceTree = "<group>"; };
-		715A1247707C6189876A70C4DD11FE88 /* Pods-MovieNightTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-MovieNightTests.modulemap"; sourceTree = "<group>"; };
+		715A1247707C6189876A70C4DD11FE88 /* Pods-MovieNightTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MovieNightTests.modulemap"; sourceTree = "<group>"; };
 		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		811B97E4E35E4AF150935B282C443539 /* Pods-MovieNight-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MovieNight-acknowledgements.markdown"; sourceTree = "<group>"; };
 		824BEC8BF423AC47D061AEF7F11E1D9F /* SAMCache+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SAMCache+Private.h"; path = "SAMCache/SAMCache+Private.h"; sourceTree = "<group>"; };
 		91EA6198DAF848F4ACD456C8085F90EC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A572C5E909E3F27D00ADE45F06B68D3A /* Pods-MovieNightUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieNightUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A77ABA5B476B37240EAE9E61721EA86E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF2B2098CBB342BA95C585BA6F991AE0 /* Pods-MovieNightTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MovieNightTests-dummy.m"; sourceTree = "<group>"; };
 		B137FDCBCF932C4D3AEC52EED3B3A728 /* Pods-MovieNightTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieNightTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		B4B8C8B28585525ED77C4F86208EE1AA /* SAMCache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SAMCache.modulemap; sourceTree = "<group>"; };
+		B4B8C8B28585525ED77C4F86208EE1AA /* SAMCache.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SAMCache.modulemap; sourceTree = "<group>"; };
 		B774AE42DEABA1AD684F40D61E011667 /* SAMCache-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAMCache-prefix.pch"; sourceTree = "<group>"; };
 		B93509B0747C7BEF0A746C6450660329 /* Pods-MovieNightTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MovieNightTests-resources.sh"; sourceTree = "<group>"; };
 		BED8790C52C24330F152EEAF27D51EE0 /* SAMCache-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAMCache-dummy.m"; sourceTree = "<group>"; };
@@ -83,9 +83,9 @@
 		C31B4431204534F43E06EA6F554E205E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3CFF532054059B8FFA437393B2DD048 /* Pods-MovieNightUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MovieNightUITests-dummy.m"; sourceTree = "<group>"; };
 		D33F29CCAFCB4127015DD95596C46ED6 /* Pods-MovieNightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieNightTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D7D7FF146698DC0D10AE98A42B0F6E0A /* Pods_MovieNightUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MovieNightUITests.framework; path = "Pods-MovieNightUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7D7FF146698DC0D10AE98A42B0F6E0A /* Pods_MovieNightUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNightUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ED11A5E61DAA8820504155B58F9328 /* Pods-MovieNightUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieNightUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		EB756E022565685FFF0319BCA494EC30 /* SAMCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SAMCache.framework; path = SAMCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB756E022565685FFF0319BCA494EC30 /* SAMCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SAMCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,6 @@
 				824BEC8BF423AC47D061AEF7F11E1D9F /* SAMCache+Private.h */,
 				38F1D8C683A1782965E65E2523B48B9E /* Support Files */,
 			);
-			name = SAMCache;
 			path = SAMCache;
 			sourceTree = "<group>";
 		};
@@ -381,14 +380,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 1140;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = 002C1746242F2632252C78D38D8D842F /* Products */;
@@ -459,20 +459,32 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
@@ -777,19 +789,31 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
