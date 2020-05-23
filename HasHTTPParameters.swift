@@ -15,50 +15,54 @@ protocol HasHTTPParameters {
 extension MovieEra: HasHTTPParameters {
     var parameters: HTTPParameters {
         
-        let minYear: Int
-        let maxYear: Int
-        
+        let minDate: String
+        let maxDate: String
+
+        let currentDate = Date()
+
         switch self {
             
         case .earliestMovies:
-            minYear = 1
-            maxYear = 1939
+            minDate = "1901-01-01"
+            maxDate = "1939-12-31"
             
         case .oldClassics:
-            minYear = 1940
-            maxYear = 1969
+            minDate = "1940-01-01"
+            maxDate = "1969-12-31"
             
         case .decade70s:
-            minYear = 1970
-            maxYear = 1979
+            minDate = "1970-01-01"
+            maxDate = "1979-12-31"
             
         case .decade80s:
-            minYear = 1980
-            maxYear = 1989
+            minDate = "1980-01-01"
+            maxDate = "1989-12-31"
             
         case .decade90s:
-            minYear = 1990
-            maxYear = 1999
+            minDate = "1990-01-01"
+            maxDate = "1999-12-31"
             
         case .decade2000s:
-            minYear = 2000
-            maxYear = 3000
-            
+            minDate = "2000-01-01"
+            maxDate = "2009-12-31"
+
+        case .decade2010s:
+            minDate = "2010-01-01"
+            maxDate = "2019-12-31"
+
         case .recents:
-            // get current year
-            let currentYear = Date.currentYear()
             
-            minYear = currentYear - 1
-            maxYear = currentYear
+            minDate = currentDate.addingTimeInterval(-1 * 60 * 60 * 24 * 365).description
+            maxDate = currentDate.description
             
         case . luckDip:
-            minYear = 1
-            maxYear = 3000
+            minDate = "1900-01-01"
+            maxDate = currentDate.description
         }
 
         return [
-            Key.primary_release_date.rawValue + ".gte" : minYear,
-            Key.primary_release_date.rawValue + ".lte" : maxYear
+            Key.primary_release_date.rawValue + ".gte" : minDate,
+            Key.primary_release_date.rawValue + ".lte" : maxDate
         ]
     }
 }

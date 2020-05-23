@@ -10,7 +10,6 @@ import Foundation
 
 enum UserDefaultsKey: String {
     
-    case everBeenRunBefore
-    case usersArray
+    case watchersArray
     case photoRootPath
 }

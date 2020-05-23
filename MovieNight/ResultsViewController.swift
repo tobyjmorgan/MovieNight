@@ -10,9 +10,23 @@ import UIKit
 import GameKit
 import SAMCache
 
+protocol ResultsNavDelegate: NavDelegate {
+    func onStartOver()
+}
+
+protocol ResultsDataDelegate: DataDelegate {
+    var watcherCount: Int { get }
+    var allSelectedMovies: [Movie] { get }
+}
+
 class ResultsViewController: UIViewController {
 
-    var userSelectionDelegate: UserSelectionDelegate?
+    weak var navDelegate: ResultsNavDelegate?
+    weak var dataDelegate: ResultsDataDelegate?
+    
+    var allSelectedMovies: [Movie] {
+        return dataDelegate?.allSelectedMovies ?? []
+    }
     
     var feedbackLabelStrings: [String] = []
     
@@ -22,13 +36,12 @@ class ResultsViewController: UIViewController {
     @IBOutlet var buttonView: UIView!
     
     @IBAction func onStartOver() {
-        _ = navigationController?.popToRootViewController(animated: true)
+        navDelegate?.onStartOver()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        buttonView.myWhiteBorder()
         buttonView.isHidden = true
         
         feedbackLabel.isHidden = true
@@ -55,60 +68,60 @@ class ResultsViewController: UIViewController {
 
     func processResults() {
         
-        guard let delegate = userSelectionDelegate else {
-            badOutcome()
-            return
-        }
-        
-        
-        let allResults = delegate.allSelections.flatMap({ $0.selectedResults })
-        
-        guard allResults.count > 0 else {
+        guard let delegate = dataDelegate, allSelectedMovies.count > 0 else {
             badOutcome()
             return
         }
 
         // algorithm to find the duplicates i.e. movies more than one user picked
-        var duplicateMovies: [Movie] = []
+        var mutualMovies: [Movie] = []
         
-        // walk one by one through the array
-        for i in 0..<allResults.count {
+        if delegate.watcherCount == 1 {
             
-            let movieA = allResults[i].movie
-            
-            // walk one by one through the array, but starting on the next element
-            // only look for matches if we haven't already found this to be a duplicate
-            if !duplicateMovies.contains(movieA) {
-                
-                for j in i+1..<allResults.count {
-                    
-                    let movieB = allResults[j].movie
-                    
-                    if movieA == movieB {
-                        // its a new duplicate, so add it to the array and move on to the next outer element
-                        duplicateMovies.append(movieA)
-                        break
-                    }
-                }
-            }
-        }
-    
-        if duplicateMovies.count == 0 {
-            
-            // no common ground, pick one at random
-            let movie = allResults[GKRandomSource.sharedRandom().nextInt(upperBound: allResults.count)].movie
-            displayResults(movie: movie, messages: ["No common ground...", "Picking a random movie from your selections..."])
-            
-        } else if duplicateMovies.count == 1 {
-            
-            // we have one common movie - yay perfect outcome
-            displayResults(movie: duplicateMovies[0], messages: ["A match!"])
+            let movie = allSelectedMovies[GKRandomSource.sharedRandom().nextInt(upperBound: allSelectedMovies.count)]
+            displayResults(movie: movie, messages: ["Here goes...", "Picking a movie for you..."])
             
         } else {
             
-            // we have multiple matches, make a best guess pick of these
-            let movie = duplicateMovies[GKRandomSource.sharedRandom().nextInt(upperBound: duplicateMovies.count)]
-            displayResults(movie: movie, messages: ["Multiple matches...", "Picking most likely movie for you..."])
+                // walk one by one through the array
+                for i in 0..<allSelectedMovies.count {
+                    
+                    let movieA = allSelectedMovies[i]
+                    
+                    // walk one by one through the array, but starting on the next element
+                    // only look for matches if we haven't already found this to be a duplicate
+                    if !mutualMovies.contains(movieA) {
+                        
+                        for j in i+1..<allSelectedMovies.count {
+                            
+                            let movieB = allSelectedMovies[j]
+                            
+                            if movieA == movieB {
+                                // its a new duplicate, so add it to the array and move on to the next outer element
+                                mutualMovies.append(movieA)
+                                break
+                            }
+                        }
+                    }
+                }
+            
+                if mutualMovies.count == 0 {
+                    
+                    // no common ground, pick one at random
+                    let movie = allSelectedMovies[GKRandomSource.sharedRandom().nextInt(upperBound: allSelectedMovies.count)]
+                    displayResults(movie: movie, messages: ["No common ground...", "Picking a random movie from your selections..."])
+                    
+                } else if mutualMovies.count == 1 {
+                    
+                    // we have one common movie - yay perfect outcome
+                    displayResults(movie: mutualMovies[0], messages: ["A match!"])
+                    
+                } else {
+                    
+                    // we have multiple matches, make a best guess pick of these
+                    let movie = mutualMovies[GKRandomSource.sharedRandom().nextInt(upperBound: mutualMovies.count)]
+                    displayResults(movie: movie, messages: ["Multiple matches...", "Picking most likely movie for you..."])
+                }
         }
     }
 

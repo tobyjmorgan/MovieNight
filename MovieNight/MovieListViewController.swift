@@ -8,19 +8,32 @@
 
 import UIKit
 
+protocol MovieListNavDelegate: NavDelegate {
+    func onViewMovieDetails(movie: Movie)
+    func onNextStepMovieList()
+}
+
+protocol MovieListDataDelegate: DataDelegate {
+    var movieResults: [PrioritizableResult] { get }
+    var maxPickCount: Int { get }
+    
+    func applyMovieSelectionsForCurrentWatcher(moviePicks: [PrioritizableResult])
+    func goToNextSelectionStep()
+}
+
 class MovieListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var results: [PrioritizableResult] = [] {
-        didSet {
-            tableView.reloadData()
-        }
+    var results: [PrioritizableResult] {
+        return dataDelegate?.movieResults ?? []
     }
     
-    var userNameDelegate: UserNameDelegate?
-    var userSelectionDelegate: UserSelectionDelegate?
-    var maxPickCount: Int = 3
+    var maxPickCount: Int {
+        return dataDelegate?.maxPickCount ?? 3
+    }
     
-    var lastSelectedResult: PrioritizableResult?
+    var navDelegate: MovieListNavDelegate?
+    var dataDelegate: MovieListDataDelegate?
+   
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var buttonView: UIView!
@@ -28,35 +41,20 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
 
     @IBAction func onNextStep() {
         
-        if let delegate = userSelectionDelegate {
+        // capture the selected results
+        if let selections = tableView.indexPathsForSelectedRows {
             
-            // play sound
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayClickSound.rawValue), object: nil)
+            var moviePicks: [PrioritizableResult] = []
             
-            // capture the selected results
-            if let selections = tableView.indexPathsForSelectedRows {
-                
-                var moviePicks: [PrioritizableResult] = []
-                
-                for indexPath in selections {
-                    moviePicks.append(results[indexPath.row])
-                }
-                
-                userSelectionDelegate?.userSelection.selectedResults = moviePicks
+            for indexPath in selections {
+                moviePicks.append(results[indexPath.row])
             }
             
-            delegate.goToNextStep()
-            
-            if delegate.selectionMode == .done {
-                
-                // time to see results
-                performSegue(withIdentifier: "ShowResults", sender: self)
-                
-            } else {
-                
-                performSegue(withIdentifier: "PassDevice", sender: self)
-            }
+            dataDelegate?.applyMovieSelectionsForCurrentWatcher(moviePicks: moviePicks)
         }
+        
+        dataDelegate?.goToNextSelectionStep()
+        navDelegate?.onNextStepMovieList()
     }
     
     override func viewDidLoad() {
@@ -65,12 +63,7 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.delegate = self
         tableView.dataSource = self
         
-        buttonView.myWhiteBorder()
         buttonView.isHidden = true
-        
-        if let delegate = userSelectionDelegate {
-            results = delegate.movieResults
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,6 +79,8 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        tableView.reloadData()
     }
         
     func updateInstructionLabel() {
@@ -145,9 +140,7 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
 
-        // go to the movie detail screen
-        lastSelectedResult = results[indexPath.row]
-        performSegue(withIdentifier: "MovieDetail", sender: self)
+        navDelegate?.onViewMovieDetails(movie: results[indexPath.row].movie)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -172,32 +165,5 @@ class MovieListViewController: UIViewController, UITableViewDataSource, UITableV
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: SoundManager.Notifications.notificationPlayClickSound.rawValue), object: nil)
         
         updateInstructionLabel()
-    }
-    
-    
-    
-    
-    ////////////////////////////////////////////////////
-    // MARK: segue processing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let vc = segue.destination as? MovieDetailViewController {
-            
-            // let the movie detail screen know what to show
-            vc.movie = lastSelectedResult?.movie
-            return
-        }
-        
-        // pass to next player
-        if let vc = segue.destination as? PassDeviceViewController {
-            
-            vc.userNameDelegate = userNameDelegate
-            vc.userSelectionDelegate = userSelectionDelegate
-        }
-        
-        if let vc = segue.destination as? ResultsViewController {
-            vc.userSelectionDelegate = userSelectionDelegate
-        }
     }
 }

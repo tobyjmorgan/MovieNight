@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Genre {
+public struct Genre {
     var id: Int
     var name: String
 }

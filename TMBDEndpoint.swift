@@ -44,7 +44,7 @@ extension TMBDEndpoint: Endpoint {
             return "/3/person/popular"
             
         case .movie(_), .person(_):
-            return "" // TODO: coplete these cases
+            return "" // TODO: complete these cases
         }
     }
     

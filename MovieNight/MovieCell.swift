@@ -38,7 +38,6 @@ class MovieCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        cellFrame.myWhiteBorder()
         moviePhoto.layer.cornerRadius = 10.0
     }
 

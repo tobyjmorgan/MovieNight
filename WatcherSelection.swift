@@ -8,14 +8,14 @@
 
 import Foundation
 
-class UserSelection {
+class WatcherSelection {
     var selectedGenres: [Genre] = []
     var selectedEras: [MovieEra] = []
     var selectedPeople: [Person] = []
     var selectedResults: [PrioritizableResult] = []
 }
 
-extension UserSelection: CustomStringConvertible {
+extension WatcherSelection: CustomStringConvertible {
 
     var selectedGenresDescription: String {
         

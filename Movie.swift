@@ -25,3 +25,5 @@ extension Movie: Equatable {}
 func ==(lhs: Movie, rhs: Movie) -> Bool {
     return lhs.id == rhs.id
 }
+
+extension Movie: Hashable { }

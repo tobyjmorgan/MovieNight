@@ -11,12 +11,12 @@ import UIKit
 
 // used to drive the "heat map" color coding of the results
 enum ResultPriority: Int {
-    case matchOnAllCriteria
-    case matchOnAllPeople
-    case matchOnOnePerson
-    case matchOnAllGenres
-    case matchOnOneGenre
-    case matchOnOneEra
+    case matchOnAllCriteria     = 6
+    case matchOnAllPeople       = 5
+    case matchOnOnePerson       = 4
+    case matchOnAllGenres       = 3
+    case matchOnOneGenre        = 2
+    case matchOnOneEra          = 1
 }
 
 extension ResultPriority {
@@ -24,6 +24,7 @@ extension ResultPriority {
         return [.matchOnAllCriteria, .matchOnAllPeople, .matchOnOnePerson, .matchOnAllGenres, .matchOnOneGenre, .matchOnOneEra]
     }
 }
+
 extension ResultPriority {
     var color: UIColor {
         

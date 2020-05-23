@@ -12,9 +12,8 @@ import UIKit
 extension UIImage {
     
     static var photoRootPath: String {
-        let defaults = UserDefaults.standard
         
-        if let photoPath = defaults.value(forKey: UserDefaultsKey.photoRootPath.rawValue) as? String {
+        if let photoPath = UserDefaults.standard.value(forKey: UserDefaultsKey.photoRootPath.rawValue) as? String {
             return photoPath
         }
         

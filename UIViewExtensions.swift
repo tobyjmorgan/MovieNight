@@ -9,17 +9,6 @@
 import Foundation
 import UIKit
 
-extension UIView {
-    
-    func myWhiteBorder() {
-        
-        self.layer.cornerRadius = 10.0
-        self.layer.borderWidth = 2.0
-        self.layer.borderColor = UIColor.white.cgColor
-
-    }
-}
-
 // adapted from code by Andrew Bancroft
 // https://www.andrewcbancroft.com/2014/10/15/rotate-animation-in-swift/
 extension UIView {

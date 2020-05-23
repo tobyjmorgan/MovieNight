@@ -1,5 +1,5 @@
 //
-//  EditUserViewController.swift
+//  EditWatcherViewController.swift
 //  MovieNight
 //
 //  Created by redBred LLC on 12/11/16.
@@ -8,9 +8,13 @@
 
 import UIKit
 
-class EditUserViewController: UIViewController {
+protocol EditWatcherDataDelegate: DataDelegate {
+    var currentUserName: String { get set }
+}
 
-    var delegate: EditUserDelegate?
+class EditWatcherViewController: UIViewController {
+
+    weak var dataDelegate: EditWatcherDataDelegate?
     
     @IBOutlet var userNameLabel: UITextField!
     @IBOutlet var userImage: UIImageView!
@@ -18,10 +22,7 @@ class EditUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let userName = delegate?.userName {
-            
-            userNameLabel.text = userName
-        }
+        userNameLabel.text = dataDelegate?.currentUserName ?? "?"
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,9 +46,10 @@ class EditUserViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         if (self.isMovingFromParent) {
+            
             if let name = userNameLabel.text {
                 
-                delegate?.onDismissEditUser(newName: name)
+                dataDelegate?.currentUserName = name
             }
         }
     }

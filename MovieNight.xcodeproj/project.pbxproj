@@ -26,6 +26,8 @@
 		6B28D51B1E055942006B19C5 /* PrioritizableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B28D51A1E055942006B19C5 /* PrioritizableResult.swift */; };
 		6B28D51D1E05698D006B19C5 /* ResultPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B28D51C1E05698D006B19C5 /* ResultPriority.swift */; };
 		6B28D5211E0578CA006B19C5 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B28D5201E0578CA006B19C5 /* MovieDetailViewController.swift */; };
+		6B9F62F224759F54006A4E55 /* MovieNightNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F62F124759F54006A4E55 /* MovieNightNavigationController.swift */; };
+		6B9F62F424759F6B006A4E55 /* Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F62F324759F6B006A4E55 /* Screens.swift */; };
 		6BB0A5F21E077A85009E816A /* Tada.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6BB0A5F11E077A85009E816A /* Tada.wav */; };
 		6BB0A5F41E077BF1009E816A /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB0A5F31E077BF1009E816A /* ResultsViewController.swift */; };
 		6BBB37B11E06CAD400A2E367 /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBB37B01E06CAD400A2E367 /* ProcessingViewController.swift */; };
@@ -39,8 +41,7 @@
 		6BD985241DFD8F1800CDA47F /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */; };
 		6BD985261DFD8F3F00CDA47F /* SetUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */; };
 		6BD985281DFD904000CDA47F /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */; };
-		6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */; };
-		6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */; };
+		6BD9852A1DFDA62F00CDA47F /* EditWatcherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985291DFDA62F00CDA47F /* EditWatcherViewController.swift */; };
 		6BD9852E1DFE526300CDA47F /* PassDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */; };
 		6BD9853C1DFF188100CDA47F /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9853A1DFF188100CDA47F /* DateExtensions.swift */; };
 		6BD9853D1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9853B1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift */; };
@@ -56,12 +57,10 @@
 		6BD985541DFF18BB00CDA47F /* DiscoverType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */; };
 		6BD985551DFF18BB00CDA47F /* HasHTTPParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9854D1DFF18BB00CDA47F /* HasHTTPParameters.swift */; };
 		6BD985571DFF18F300CDA47F /* JSONInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985561DFF18F300CDA47F /* JSONInitable.swift */; };
-		6BD9855B1DFF480200CDA47F /* UserSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855A1DFF480200CDA47F /* UserSelection.swift */; };
+		6BD9855B1DFF480200CDA47F /* WatcherSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855A1DFF480200CDA47F /* WatcherSelection.swift */; };
 		6BD9855D1DFF489700CDA47F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855C1DFF489700CDA47F /* Model.swift */; };
 		6BD9855F1DFF4A4100CDA47F /* PreferenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */; };
 		6BD985611DFF4B1200CDA47F /* PreferenceTypeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */; };
-		6BD9859F1DFF4E8400CDA47F /* UserSelectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */; };
-		6BD985A31E00401600CDA47F /* UserNameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A21E00401600CDA47F /* UserNameDelegate.swift */; };
 		6BD985A71E0186A600CDA47F /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD985A61E0186A600CDA47F /* UIColorExtensions.swift */; };
 		7334860610AD9D91CFDAF8AD /* Pods_MovieNight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3432DF90DD6A8ADF3AA83762 /* Pods_MovieNight.framework */; };
 		BEAC041D47D01F6FC2470855 /* Pods_MovieNightTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F306E7F8CD482DD692772E1 /* Pods_MovieNightTests.framework */; };
@@ -110,6 +109,8 @@
 		6B28D51A1E055942006B19C5 /* PrioritizableResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrioritizableResult.swift; sourceTree = "<group>"; };
 		6B28D51C1E05698D006B19C5 /* ResultPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultPriority.swift; sourceTree = "<group>"; };
 		6B28D5201E0578CA006B19C5 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		6B9F62F124759F54006A4E55 /* MovieNightNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieNightNavigationController.swift; sourceTree = "<group>"; };
+		6B9F62F324759F6B006A4E55 /* Screens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screens.swift; sourceTree = "<group>"; };
 		6BB0A5F11E077A85009E816A /* Tada.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Tada.wav; sourceTree = "<group>"; };
 		6BB0A5F31E077BF1009E816A /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		6BBB37B01E06CAD400A2E367 /* ProcessingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
@@ -129,8 +130,7 @@
 		6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
 		6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpTableViewCell.swift; sourceTree = "<group>"; };
 		6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsKey.swift; path = MovieNight/UserDefaultsKey.swift; sourceTree = "<group>"; };
-		6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
-		6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserDelegate.swift; sourceTree = "<group>"; };
+		6BD985291DFDA62F00CDA47F /* EditWatcherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWatcherViewController.swift; sourceTree = "<group>"; };
 		6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassDeviceViewController.swift; sourceTree = "<group>"; };
 		6BD9853A1DFF188100CDA47F /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		6BD9853B1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryAddValuesFromDictionary.swift; sourceTree = "<group>"; };
@@ -146,12 +146,10 @@
 		6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverType.swift; sourceTree = "<group>"; };
 		6BD9854D1DFF18BB00CDA47F /* HasHTTPParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasHTTPParameters.swift; sourceTree = "<group>"; };
 		6BD985561DFF18F300CDA47F /* JSONInitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONInitable.swift; sourceTree = "<group>"; };
-		6BD9855A1DFF480200CDA47F /* UserSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelection.swift; sourceTree = "<group>"; };
+		6BD9855A1DFF480200CDA47F /* WatcherSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatcherSelection.swift; sourceTree = "<group>"; };
 		6BD9855C1DFF489700CDA47F /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceType.swift; sourceTree = "<group>"; };
 		6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceTypeListViewController.swift; sourceTree = "<group>"; };
-		6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionDelegate.swift; sourceTree = "<group>"; };
-		6BD985A21E00401600CDA47F /* UserNameDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNameDelegate.swift; sourceTree = "<group>"; };
 		6BD985A61E0186A600CDA47F /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		7D08C868A6EB1E88B827FB79 /* Pods-MovieNightTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieNightTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieNightTests/Pods-MovieNightTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B038AF7F583AAF15E245DCE3 /* Pods_MovieNightUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieNightUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,13 +224,12 @@
 			isa = PBXGroup;
 			children = (
 				6BD984F51DFD893600CDA47F /* AppDelegate.swift */,
+				6B9F62F324759F6B006A4E55 /* Screens.swift */,
+				6B9F62F124759F54006A4E55 /* MovieNightNavigationController.swift */,
 				6B28D5091E0429F8006B19C5 /* MyColors.swift */,
 				6BD985231DFD8F1800CDA47F /* SetUpViewController.swift */,
 				6BD985251DFD8F3F00CDA47F /* SetUpTableViewCell.swift */,
-				6BD985291DFDA62F00CDA47F /* EditUserViewController.swift */,
-				6BD9852B1DFDA63F00CDA47F /* EditUserDelegate.swift */,
-				6BD9859E1DFF4E8400CDA47F /* UserSelectionDelegate.swift */,
-				6BD985A21E00401600CDA47F /* UserNameDelegate.swift */,
+				6BD985291DFDA62F00CDA47F /* EditWatcherViewController.swift */,
 				6BD9852D1DFE526300CDA47F /* PassDeviceViewController.swift */,
 				6BD985601DFF4B1200CDA47F /* PreferenceTypeListViewController.swift */,
 				6B28D4FD1E0334FA006B19C5 /* PreferenceCell.swift */,
@@ -307,7 +304,7 @@
 				6BD985471DFF18BB00CDA47F /* MovieEra.swift */,
 				6BD9854C1DFF18BB00CDA47F /* DiscoverType.swift */,
 				6BD985271DFD904000CDA47F /* UserDefaultsKey.swift */,
-				6BD9855A1DFF480200CDA47F /* UserSelection.swift */,
+				6BD9855A1DFF480200CDA47F /* WatcherSelection.swift */,
 				6BD9855E1DFF4A4100CDA47F /* PreferenceType.swift */,
 				6B28D4F91E030BD5006B19C5 /* Listable.swift */,
 				6B28D5031E033A8C006B19C5 /* PhotoListable.swift */,
@@ -635,14 +632,13 @@
 				6B28D5061E033D97006B19C5 /* PhotoListCell.swift in Sources */,
 				6BD985241DFD8F1800CDA47F /* SetUpViewController.swift in Sources */,
 				6BD9855F1DFF4A4100CDA47F /* PreferenceType.swift in Sources */,
-				6BD9852C1DFDA63F00CDA47F /* EditUserDelegate.swift in Sources */,
 				6BD985A71E0186A600CDA47F /* UIColorExtensions.swift in Sources */,
 				6BD985431DFF189B00CDA47F /* TMBDAPIClient.swift in Sources */,
 				6BD985531DFF18BB00CDA47F /* Person.swift in Sources */,
 				6BD9853D1DFF188100CDA47F /* DictionaryAddValuesFromDictionary.swift in Sources */,
 				6BD984F61DFD893600CDA47F /* AppDelegate.swift in Sources */,
 				6B28D50A1E0429F8006B19C5 /* MyColors.swift in Sources */,
-				6BD9855B1DFF480200CDA47F /* UserSelection.swift in Sources */,
+				6BD9855B1DFF480200CDA47F /* WatcherSelection.swift in Sources */,
 				6B28D4F41E03092B006B19C5 /* ListViewController.swift in Sources */,
 				6BD985571DFF18F300CDA47F /* JSONInitable.swift in Sources */,
 				6BD9853C1DFF188100CDA47F /* DateExtensions.swift in Sources */,
@@ -654,7 +650,7 @@
 				6BBB37B11E06CAD400A2E367 /* ProcessingViewController.swift in Sources */,
 				6B28D5211E0578CA006B19C5 /* MovieDetailViewController.swift in Sources */,
 				6BB0A5F41E077BF1009E816A /* ResultsViewController.swift in Sources */,
-				6BD9852A1DFDA62F00CDA47F /* EditUserViewController.swift in Sources */,
+				6BD9852A1DFDA62F00CDA47F /* EditWatcherViewController.swift in Sources */,
 				6B28D5191E04DB3E006B19C5 /* UIViewExtensions.swift in Sources */,
 				6BD985541DFF18BB00CDA47F /* DiscoverType.swift in Sources */,
 				6B28D5171E04A1D1006B19C5 /* StringExtensions.swift in Sources */,
@@ -663,15 +659,15 @@
 				6BD985261DFD8F3F00CDA47F /* SetUpTableViewCell.swift in Sources */,
 				6BD985421DFF189B00CDA47F /* APIClient.swift in Sources */,
 				6BD985281DFD904000CDA47F /* UserDefaultsKey.swift in Sources */,
+				6B9F62F424759F6B006A4E55 /* Screens.swift in Sources */,
 				6B28D51D1E05698D006B19C5 /* ResultPriority.swift in Sources */,
 				6B28D4FC1E0326D3006B19C5 /* ListCell.swift in Sources */,
+				6B9F62F224759F54006A4E55 /* MovieNightNavigationController.swift in Sources */,
 				6B28D5081E03A2EE006B19C5 /* UIImageExtensions.swift in Sources */,
-				6BD9859F1DFF4E8400CDA47F /* UserSelectionDelegate.swift in Sources */,
 				6BD985521DFF18BB00CDA47F /* Movie.swift in Sources */,
 				6BD985551DFF18BB00CDA47F /* HasHTTPParameters.swift in Sources */,
 				6BD9852E1DFE526300CDA47F /* PassDeviceViewController.swift in Sources */,
 				6B28D5041E033A8C006B19C5 /* PhotoListable.swift in Sources */,
-				6BD985A31E00401600CDA47F /* UserNameDelegate.swift in Sources */,
 				6BD985441DFF189B00CDA47F /* TMBDEndpoint.swift in Sources */,
 				6B28D51B1E055942006B19C5 /* PrioritizableResult.swift in Sources */,
 				6BD985611DFF4B1200CDA47F /* PreferenceTypeListViewController.swift in Sources */,
